@@ -805,7 +805,7 @@ Module DatabaseOperation
         Dim res As New List(Of String)
         Using con As MySqlConnection = Conn()
             Dim stmt =
-                    "SELECT " & columnName & " FROM promo WHERE Promo_ID > 1"
+                    "SELECT " & columnName & " FROM promo WHERE Promo_ID > 1 AND `Enable` = True"
             Dim cmd = Command(stmt, con)
             con.Open()
             Dim rd As MySqlDataReader = cmd.ExecuteReader
