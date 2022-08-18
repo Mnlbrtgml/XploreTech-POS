@@ -59,7 +59,7 @@
         LoadActionButton(dgvTable)
     End Sub
 
-    Private Sub dgvTable_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
+    Private Sub dgvTable_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvTable.CellContentClick
         Try
             Dim dr As DataGridViewRow = dgvTable.Rows(e.RowIndex)
 
