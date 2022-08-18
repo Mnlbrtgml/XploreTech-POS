@@ -29,21 +29,21 @@ Partial Class frmDashboard
         Me.Guna2Panel2 = New Guna.UI2.WinForms.Guna2Panel()
         Me.ctrlChartCanvas = New Bunifu.Charts.WinForms.BunifuChartCanvas()
         Me.BunifuLabel4 = New Bunifu.UI.WinForms.BunifuLabel()
-        Me.Guna2Panel3 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.BunifuLabel5 = New Bunifu.UI.WinForms.BunifuLabel()
         Me.Guna2Panel4 = New Guna.UI2.WinForms.Guna2Panel()
         Me.lblNumberOfSoldToday = New Bunifu.UI.WinForms.BunifuLabel()
         Me.BunifuLabel2 = New Bunifu.UI.WinForms.BunifuLabel()
         Me.Guna2Panel5 = New Guna.UI2.WinForms.Guna2Panel()
         Me.lblDailySales = New Bunifu.UI.WinForms.BunifuLabel()
         Me.BunifuLabel3 = New Bunifu.UI.WinForms.BunifuLabel()
+        Me.Guna2Panel3 = New Guna.UI2.WinForms.Guna2Panel()
         Me.scbrPromoList = New Bunifu.UI.WinForms.BunifuVScrollBar()
         Me.pnlPromoList = New Bunifu.UI.WinForms.BunifuPanel()
+        Me.BunifuLabel5 = New Bunifu.UI.WinForms.BunifuLabel()
         Me.Guna2Panel1.SuspendLayout()
         Me.Guna2Panel2.SuspendLayout()
-        Me.Guna2Panel3.SuspendLayout()
         Me.Guna2Panel4.SuspendLayout()
         Me.Guna2Panel5.SuspendLayout()
+        Me.Guna2Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'Guna2Panel1
@@ -192,41 +192,6 @@ Partial Class frmDashboard
         Me.BunifuLabel4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
         Me.BunifuLabel4.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.[Default]
         '
-        'Guna2Panel3
-        '
-        Me.Guna2Panel3.BorderColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(163, Byte), Integer), CType(CType(146, Byte), Integer))
-        Me.Guna2Panel3.BorderRadius = 6
-        Me.Guna2Panel3.Controls.Add(Me.scbrPromoList)
-        Me.Guna2Panel3.Controls.Add(Me.pnlPromoList)
-        Me.Guna2Panel3.Controls.Add(Me.BunifuLabel5)
-        Me.Guna2Panel3.FillColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(163, Byte), Integer), CType(CType(146, Byte), Integer))
-        Me.Guna2Panel3.Font = New System.Drawing.Font("Roboto", 9.0!)
-        Me.Guna2Panel3.Location = New System.Drawing.Point(476, 335)
-        Me.Guna2Panel3.Name = "Guna2Panel3"
-        Me.Guna2Panel3.ShadowDecoration.Enabled = True
-        Me.Guna2Panel3.ShadowDecoration.Parent = Me.Guna2Panel3
-        Me.Guna2Panel3.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 5, 5)
-        Me.Guna2Panel3.Size = New System.Drawing.Size(453, 286)
-        Me.Guna2Panel3.TabIndex = 3
-        '
-        'BunifuLabel5
-        '
-        Me.BunifuLabel5.AllowParentOverrides = False
-        Me.BunifuLabel5.AutoEllipsis = False
-        Me.BunifuLabel5.AutoSize = False
-        Me.BunifuLabel5.BackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(92, Byte), Integer))
-        Me.BunifuLabel5.CursorType = Nothing
-        Me.BunifuLabel5.Dock = System.Windows.Forms.DockStyle.Top
-        Me.BunifuLabel5.Font = New System.Drawing.Font("Roboto", 8.0!)
-        Me.BunifuLabel5.Location = New System.Drawing.Point(0, 0)
-        Me.BunifuLabel5.Name = "BunifuLabel5"
-        Me.BunifuLabel5.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.BunifuLabel5.Size = New System.Drawing.Size(453, 50)
-        Me.BunifuLabel5.TabIndex = 1
-        Me.BunifuLabel5.Text = "Promo"
-        Me.BunifuLabel5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.BunifuLabel5.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.[Default]
-        '
         'Guna2Panel4
         '
         Me.Guna2Panel4.BackColor = System.Drawing.Color.Transparent
@@ -333,6 +298,24 @@ Partial Class frmDashboard
         Me.BunifuLabel3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
         Me.BunifuLabel3.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.[Default]
         '
+        'Guna2Panel3
+        '
+        Me.Guna2Panel3.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2Panel3.BorderColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(163, Byte), Integer), CType(CType(146, Byte), Integer))
+        Me.Guna2Panel3.BorderRadius = 6
+        Me.Guna2Panel3.Controls.Add(Me.scbrPromoList)
+        Me.Guna2Panel3.Controls.Add(Me.pnlPromoList)
+        Me.Guna2Panel3.Controls.Add(Me.BunifuLabel5)
+        Me.Guna2Panel3.FillColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(163, Byte), Integer), CType(CType(146, Byte), Integer))
+        Me.Guna2Panel3.Font = New System.Drawing.Font("Roboto", 9.0!)
+        Me.Guna2Panel3.Location = New System.Drawing.Point(476, 335)
+        Me.Guna2Panel3.Name = "Guna2Panel3"
+        Me.Guna2Panel3.ShadowDecoration.Enabled = True
+        Me.Guna2Panel3.ShadowDecoration.Parent = Me.Guna2Panel3
+        Me.Guna2Panel3.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 5, 5)
+        Me.Guna2Panel3.Size = New System.Drawing.Size(453, 286)
+        Me.Guna2Panel3.TabIndex = 8
+        '
         'scbrPromoList
         '
         Me.scbrPromoList.AllowCursorChanges = True
@@ -363,7 +346,7 @@ Partial Class frmDashboard
         Me.scbrPromoList.ScrollBarBorderColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(92, Byte), Integer))
         Me.scbrPromoList.ScrollBarColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(92, Byte), Integer))
         Me.scbrPromoList.ShrinkSizeLimit = 3
-        Me.scbrPromoList.Size = New System.Drawing.Size(10, 230)
+        Me.scbrPromoList.Size = New System.Drawing.Size(8, 230)
         Me.scbrPromoList.SmallChange = 1
         Me.scbrPromoList.TabIndex = 11
         Me.scbrPromoList.ThumbColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(99, Byte), Integer), CType(CType(78, Byte), Integer))
@@ -380,12 +363,30 @@ Partial Class frmDashboard
         Me.pnlPromoList.BorderColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(163, Byte), Integer), CType(CType(146, Byte), Integer))
         Me.pnlPromoList.BorderRadius = 0
         Me.pnlPromoList.BorderThickness = 0
-        Me.pnlPromoList.Location = New System.Drawing.Point(3, 53)
+        Me.pnlPromoList.Location = New System.Drawing.Point(4, 53)
         Me.pnlPromoList.Margin = New System.Windows.Forms.Padding(3, 3, 0, 3)
         Me.pnlPromoList.Name = "pnlPromoList"
         Me.pnlPromoList.ShowBorders = True
         Me.pnlPromoList.Size = New System.Drawing.Size(434, 230)
         Me.pnlPromoList.TabIndex = 10
+        '
+        'BunifuLabel5
+        '
+        Me.BunifuLabel5.AllowParentOverrides = False
+        Me.BunifuLabel5.AutoEllipsis = False
+        Me.BunifuLabel5.AutoSize = False
+        Me.BunifuLabel5.BackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(92, Byte), Integer))
+        Me.BunifuLabel5.CursorType = Nothing
+        Me.BunifuLabel5.Dock = System.Windows.Forms.DockStyle.Top
+        Me.BunifuLabel5.Font = New System.Drawing.Font("Roboto", 8.0!)
+        Me.BunifuLabel5.Location = New System.Drawing.Point(0, 0)
+        Me.BunifuLabel5.Name = "BunifuLabel5"
+        Me.BunifuLabel5.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.BunifuLabel5.Size = New System.Drawing.Size(453, 50)
+        Me.BunifuLabel5.TabIndex = 1
+        Me.BunifuLabel5.Text = "Promo"
+        Me.BunifuLabel5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.BunifuLabel5.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.[Default]
         '
         'frmDashboard
         '
@@ -393,8 +394,8 @@ Partial Class frmDashboard
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(249, Byte), Integer), CType(CType(209, Byte), Integer), CType(CType(200, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(954, 646)
-        Me.Controls.Add(Me.Guna2Panel5)
         Me.Controls.Add(Me.Guna2Panel3)
+        Me.Controls.Add(Me.Guna2Panel5)
         Me.Controls.Add(Me.Guna2Panel2)
         Me.Controls.Add(Me.Guna2Panel4)
         Me.Controls.Add(Me.Guna2Panel1)
@@ -406,27 +407,27 @@ Partial Class frmDashboard
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Guna2Panel1.ResumeLayout(False)
         Me.Guna2Panel2.ResumeLayout(False)
-        Me.Guna2Panel3.ResumeLayout(False)
         Me.Guna2Panel4.ResumeLayout(False)
         Me.Guna2Panel5.ResumeLayout(False)
+        Me.Guna2Panel3.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents Guna2Panel2 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents Guna2Panel3 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents Guna2Panel4 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents Guna2Panel5 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents BunifuLabel1 As Bunifu.UI.WinForms.BunifuLabel
     Friend WithEvents BunifuLabel4 As Bunifu.UI.WinForms.BunifuLabel
-    Friend WithEvents BunifuLabel5 As Bunifu.UI.WinForms.BunifuLabel
     Friend WithEvents BunifuLabel2 As Bunifu.UI.WinForms.BunifuLabel
     Friend WithEvents BunifuLabel3 As Bunifu.UI.WinForms.BunifuLabel
     Friend WithEvents lblNumberOfTransaction As Bunifu.UI.WinForms.BunifuLabel
     Friend WithEvents lblNumberOfSoldToday As Bunifu.UI.WinForms.BunifuLabel
     Friend WithEvents lblDailySales As Bunifu.UI.WinForms.BunifuLabel
     Friend WithEvents ctrlChartCanvas As Bunifu.Charts.WinForms.BunifuChartCanvas
+    Friend WithEvents Guna2Panel3 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents scbrPromoList As Bunifu.UI.WinForms.BunifuVScrollBar
     Friend WithEvents pnlPromoList As Bunifu.UI.WinForms.BunifuPanel
+    Friend WithEvents BunifuLabel5 As Bunifu.UI.WinForms.BunifuLabel
 End Class
