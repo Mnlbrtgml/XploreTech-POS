@@ -6,17 +6,18 @@ Public Class frmDashboard
         lblNumberOfSoldToday.Text = IIf(LoggedUser.UserType = "Admin", GetTodayProductSold(), GetTodayProductSoldCashier(LoggedUser.ID))
         lblDailySales.Text = Single.Parse(IIf(LoggedUser.UserType = "Admin", GetDailySales(), GetCashierDailySales(LoggedUser.ID)))
 
-        Dim NumberOfPromos As Short
-        Dim PromosInList As Short
 
-        NumberOfPromos = 6
+        Dim promoName As List(Of String) = GetPromos("Name")
+        Dim promoDescription As List(Of String) = GetPromos("Description")
+        Dim NumberOfPromos As Short = promoName.Count - 1
+        Dim PromosInList As Short
         PromosInList = 0
 
         ' Loop for adding new promo in promo list
-        For index = 1 To NumberOfPromos
+        For index = 0 To NumberOfPromos
             Dim PromoPanel As New Guna2Panel()
             Dim PromoHeader As New Guna2HtmlLabel()
-            Dim PromoDescription As New Guna2HtmlLabel()
+            Dim lblPromoDescription As New Guna2HtmlLabel()
 
             Dim PanelYAxis As Short
 
@@ -42,23 +43,23 @@ Public Class frmDashboard
                 .AutoSize = False
                 .Font = New Font("Roboto", 15)
                 .Size = New Size(422, 26)
-                .Text = "Sample Promo Header"
+                .Text = promoName(index)
                 .Location = New Point(3, 3)
             End With
 
-            With PromoDescription
+            With lblPromoDescription
                 .AutoSize = False
                 .Font = New Font("Roboto", 9)
                 .Size = New Size(404, 16)
                 .ForeColor = Color.FromArgb(64, 64, 64)
-                .Text = "Sample Promo Desctiption"
+                .Text = promoDescription(index)
                 .Location = New Point(24, 32)
             End With
 
             PromosInList += 1
             pnlPromoList.Controls.Add(PromoPanel)
             PromoPanel.Controls.Add(PromoHeader)
-            PromoPanel.Controls.Add(PromoDescription)
+            PromoPanel.Controls.Add(lblPromoDescription)
         Next
     End Sub
 End Class
