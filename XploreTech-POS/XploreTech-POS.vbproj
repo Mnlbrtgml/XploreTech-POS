@@ -423,6 +423,15 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ActivityLog.rdlc" />
+    <EmbeddedResource Include="Reports\CustomerAccount.rdlc" />
+    <EmbeddedResource Include="Reports\Inventory.rdlc" />
+    <EmbeddedResource Include="Reports\MilkteaProducts.rdlc" />
+    <EmbeddedResource Include="Reports\OtherProducts.rdlc" />
+    <EmbeddedResource Include="Reports\Receipt.rdlc" />
+    <EmbeddedResource Include="Reports\Toppings.rdlc" />
+    <EmbeddedResource Include="Reports\Transaction.rdlc" />
+    <EmbeddedResource Include="Reports\UserAccounts.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dbpointofsaleDataSet.xsc">
@@ -448,9 +457,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Reports\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Database Scripts\dbpointofsale %28with dummy%29.sql" />
     <Content Include="Database Scripts\dbpointofsale %28with only default data%29 formatted.sql" />
