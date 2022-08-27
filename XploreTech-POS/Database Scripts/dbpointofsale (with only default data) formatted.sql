@@ -67,6 +67,16 @@ CREATE TABLE `customer` (
   UNIQUE KEY `Name` (`Name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+DROP TABLE IF EXISTS `unregistered_customer`;
+CREATE TABLE `unregistered_customer` (
+  `Unregistered_Customer_ID` int(4) zerofill NOT NULL AUTO_INCREMENT,
+  `Name` varchar(50) DEFAULT NULL,
+  `Contact_Number` varchar(11) DEFAULT NULL,
+  `Address` varchar(255) DEFAULT NULL,
+  `Date_Created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`Unregistered_Customer_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
 DROP TABLE IF EXISTS `milktea`;
 CREATE TABLE `milktea` (
   `Milktea_ID` int(5) unsigned zerofill NOT NULL AUTO_INCREMENT,
@@ -139,7 +149,8 @@ DROP TABLE IF EXISTS `receipt`;CREATE TABLE `receipt` (
   `Payment_Type_ID` int(2) unsigned zerofill NOT NULL,
   `Service_Type_ID` int(2) unsigned zerofill NOT NULL,
   `User_ID` int(3) unsigned zerofill NOT NULL,
-  `Customer_ID` int(4) unsigned zerofill ,
+  `Customer_ID` int(4) unsigned zerofill default null,
+  `Unregistered_Customer_ID` int(4) zerofill default null, -- if customer is not registered
   `Milktea_ID` int(5) unsigned zerofill,
   `Cup_Size_ID` int(2) unsigned zerofill,
   `Add_Ons` varchar(50) Default null,
@@ -147,13 +158,14 @@ DROP TABLE IF EXISTS `receipt`;CREATE TABLE `receipt` (
   `Quantity` int NOT NULL,
   `Price` DECIMAL NOT NULL,
   `Payment` DECIMAL NOT NULL DEFAULT '0',
-  `Change` DECIMAL NOT NULL DEFAULT '0',
+  `Discount` DECIMAL NOT NULL DEFAULT '0',
   `Date_Processed` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`),
   FOREIGN KEY (`Payment_Type_ID`) REFERENCES `payment_type`(`Payment_Type_ID`),
   FOREIGN KEY (`Service_Type_ID`) REFERENCES `service_type`(`Service_Type_ID`),
   FOREIGN KEY (`User_ID`) REFERENCES `user`(`User_ID`),
   FOREIGN KEY (`Customer_ID`) REFERENCES `customer`(`Customer_ID`),
+  FOREIGN KEY (`Unregistered_Customer_ID`) REFERENCES `unregistered_customer`(`Unregistered_Customer_ID`),
   FOREIGN KEY (`Milktea_ID`) REFERENCES `milktea`(`Milktea_ID`),
   FOREIGN KEY (`Cup_Size_ID`) REFERENCES `cup_size`(`Cup_Size_ID`),
   FOREIGN KEY (`Additional_Products_ID`) REFERENCES `additional_products`(`Additional_Products_ID`)
@@ -190,13 +202,11 @@ CREATE TABLE `transaction` (
   FOREIGN KEY (`Promo_ID`) REFERENCES `promo`(`Promo_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=100000 DEFAULT CHARSET=utf8;
 
+-- Insert Functions Below
+
 INSERT INTO `customertype` VALUES (01,'Regular',0.00);
 
-INSERT INTO `others` VALUES (01,'Paper Cup Holder',800,0,'2022-03-18 10:31:05');
-
-INSERT INTO `payment_type` VALUES (01,'Cash');
-
-INSERT INTO `promo` VALUES (01,'None','No Discount',0, true);
+INSERT INTO `payment_type` VALUES (01,'Cash'),(02,'G-Cash'),(03,'Pay-Maya');
 
 INSERT INTO `service_type` VALUES 
 (01,'Dine-in', default),
@@ -208,4 +218,4 @@ INSERT INTO `sugar_level` VALUES (01,'0%'),
 (04,'75%'),
 (05,'100%');
 
-INSERT INTO `add_ons` VALUES (01,'None',0,'Available','2022-02-17 00:27:59')
+INSERT INTO `unregistered_customer` VALUES (1, '', '', '', default);
