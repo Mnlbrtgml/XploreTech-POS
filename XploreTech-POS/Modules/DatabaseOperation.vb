@@ -18,7 +18,6 @@ Module DatabaseOperation
     End Function
 
     'Populate Combobox******************************************************************************************************************************************************************************
-
     Public Sub PopulateServiceType(cbx As Guna.UI2.WinForms.Guna2ComboBox)
 
         cbx.DataSource = Nothing
@@ -104,7 +103,6 @@ Module DatabaseOperation
                 cbx.Items.Add("No Item")
             End If
             cbx.SelectedIndex = 0
-            MsgBox(cbx.SelectedValue.ToString)
         End Using
 
     End Sub
@@ -165,6 +163,67 @@ Module DatabaseOperation
             cbx.SelectedIndex = -1
         End Using
 
+    End Sub
+
+    'Populate Combobox******************************************************************************************************************************************************************************
+    ''' <summary>
+    ''' Load Report Data
+    ''' </summary>
+    ''' <param name="ReportFileName">Don't include the filename extension</param>
+    Sub LoadReport(ReportFileName As String, Optional ReceiptNumber As String = "")
+        Dim ds As New dbpointofsaleDataSet
+        Dim table As New DataTable
+
+        Using con As MySqlConnection = Conn()
+
+            If ReportFileName = "Receipt" Then
+
+                stmt = "SELECT re.Receipt_ID AS `Receipt_Number`, 
+                        u.Full_Name AS `Processed_By`, 
+                        re.Date_Processed, 
+                        IF(cus.Name is null, ucus.Name, cus.Name) AS `Customer_Name`,
+                        IF(cus.Address is null, ucus.Address, cus.Address) AS `Customer_Add`,
+                        ptype.Name AS `Payment_Method`,
+                        stype.Name AS `Service_Method`,
+                        group_concat(IF(mi.Name is null, ap.Name, CONCAT(mi.Name,' | ',re.Add_Ons)) separator '\n') AS `Item`,
+                        group_concat(cup.name separator '\n') AS `Size`,
+                        group_concat(re.Quantity separator '\n') AS `Quantity`,
+                        group_concat(re.Price separator '\n')  AS `Price`,
+                        re.Payment,
+                        re.Discount,
+                        sum(re.Price) AS `Subtotal`,
+                        re.Payment - (sum(re.Price) - re.Discount) AS `Change`,
+                        sum(re.Price) - re.Discount AS `Total`
+                        FROM     receipt re
+				                          INNER JOIN payment_type ptype on re.Payment_Type_ID = ptype.Payment_Type_ID
+				                          INNER JOIN service_type stype on re.Service_Type_ID = stype.Service_Type_ID
+				                          INNER JOIN user u on re.User_ID = u.User_ID
+				                          LEFT JOIN customer cus on re.Customer_ID = cus.Customer_ID
+                                          LEFT JOIN unregistered_customer ucus on re.Unregistered_Customer_ID = ucus.Unregistered_Customer_ID
+				                          LEFT JOIN milktea mi on re.Milktea_ID = mi.Milktea_ID
+				                          LEFT JOIN cup_size cup on re.Cup_Size_ID = cup.Cup_Size_ID
+				                          LEFT JOIN additional_products ap on re.Additional_Products_ID = ap.Additional_Products_ID
+                        WHERE re.Receipt_ID = @ReceiptNumber"
+            End If
+
+            Using cmd = Command(stmt, con)
+                cmd.Parameters.AddWithValue("@ReceiptNumber", ReceiptNumber)
+                con.Open()
+                Dim adapter As New MySqlDataAdapter(cmd)
+
+                table = ds.Tables("Report" & ReportFileName)
+                table.Clear()
+                adapter.Fill(table)
+                With frmTestingan.report.LocalReport
+                    .ReportPath = ReportFileName & ".rdlc"
+                    .DataSources.Clear()
+                    .DataSources.Add(New Microsoft.Reporting.WinForms.ReportDataSource("reportDataSet", table))
+                End With
+            End Using
+
+            frmTestingan.ShowDialog()
+            frmTestingan.report.RefreshReport()
+        End Using
     End Sub
 
     'Load Tables************************************************************************************************************************************************************************************
@@ -413,6 +472,31 @@ Module DatabaseOperation
     End Function
 
     'Insert functions******************************************************************************************************************************************************************************************
+    Public Function InsertUnregCustomer(Name As String, Contact As String, Address As String)
+        Dim result As Boolean
+        Using con As MySqlConnection = Conn()
+            Using cmd As New MySqlCommand()
+                With cmd
+                    .CommandText = "INSERT INTO `unregistered_customer` (`Name`, `Contact_Number`, `Address`) VALUES (@name, @contact, @address)"
+                    .Connection = con
+                    .CommandType = CommandType.Text
+                    .Parameters.AddWithValue("@name", Name)
+                    .Parameters.AddWithValue("@contact", Contact)
+                    .Parameters.AddWithValue("@address", Address)
+                End With
+                con.Open()
+                Try
+                    cmd.ExecuteNonQuery()
+                    result = True
+                Catch ex As Exception
+                    MsgBox(ex.ToString)
+                    result = False
+                End Try
+            End Using
+        End Using
+        Return result
+    End Function
+
     Public Function InsertActivityLog(userid As Integer, name As String, activity As String)
         Dim result As Boolean
         Using con As MySqlConnection = Conn()
@@ -462,13 +546,13 @@ Module DatabaseOperation
         End Using
         Return result
     End Function
-    Public Sub InsertOrder(receiptID As String, paymentTypeID As String, serviceTypeID As String, userID As String, customerID As String, milkteaID As String,
-                           cupSizeID As String, addOns As String, additionalProductsID As String, quantity As String, price As String, payment As String,
-                           change As String)
-
+    Public Sub InsertOrder(receiptID As String, paymentTypeID As String, serviceTypeID As String, userID As String, customerID As String, unregCustomerID As String, milkteaID As String,
+                           cupSizeID As String, addOns As String, additionalProductsID As String, quantity As String, price As String, payment As String, discount As String)
+        MsgBox("Receipt:" & receiptID & " paymenttype:" & paymentTypeID & " serviceType:" & serviceTypeID & " userid:" & userID & " customerid:" & customerID & " unregid:" & unregCustomerID &
+               " milktea:" & milkteaID & " cupsize:" & cupSizeID & " addons:" & addOns & " additional:" & additionalProductsID & " qty:" & quantity & " price:" & price & " payment:" & payment & " discount:" & discount)
         Using con As MySqlConnection = Conn()
-            stmt = "INSERT INTO `receipt` VALUES(Default, @receiptID, @paymentTypeID, @serviceTypeID, @userID, @customerID, @milkteaID, @cupSizeID, " _
-                   & "@addOns, @additionalProductsID, @quantity, @price, @payment, @cha, Default)"
+            stmt = "INSERT INTO `receipt` VALUES(Default, @receiptID, @paymentTypeID, @serviceTypeID, @userID, @customerID, @unregCustomerID, @milkteaID, @cupSizeID, " _
+                   & "@addOns, @additionalProductsID, @quantity, @price, @payment, @discount, Default)"
             cmd = Command(stmt, con)
             With cmd.Parameters
                 .Clear()
@@ -477,6 +561,7 @@ Module DatabaseOperation
                 .AddWithValue("serviceTypeID", serviceTypeID)
                 .AddWithValue("userID", userID)
                 .AddWithValue("customerID", customerID)
+                .AddWithValue("unregCustomerID", unregCustomerID)
                 .AddWithValue("milkteaID", milkteaID)
                 .AddWithValue("cupSizeID", cupSizeID)
                 .AddWithValue("addOns", addOns)
@@ -484,7 +569,7 @@ Module DatabaseOperation
                 .AddWithValue("quantity", quantity)
                 .AddWithValue("price", price)
                 .AddWithValue("payment", payment)
-                .AddWithValue("cha", change)
+                .AddWithValue("discount", discount)
             End With
             con.Open()
 
