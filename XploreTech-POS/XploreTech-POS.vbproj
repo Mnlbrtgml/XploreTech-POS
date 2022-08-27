@@ -470,7 +470,6 @@
   <ItemGroup>
     <Content Include="Database Scripts\dbpointofsale %28with dummy%29.sql" />
     <Content Include="Database Scripts\dbpointofsale %28with only default data%29 formatted.sql" />
-    <Content Include="Database Scripts\dbpointofsale %28with only default data%29.sql" />
     <Content Include="icon-xplore-tech.ico" />
     <None Include="Resources\button-dashboard.png" />
     <None Include="Resources\button-logout.png" />
