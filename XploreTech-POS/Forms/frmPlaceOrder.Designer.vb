@@ -1270,6 +1270,7 @@ Partial Class frmPlaceOrder
         Me.txtStoreDiscount.Name = "txtStoreDiscount"
         Me.txtStoreDiscount.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtStoreDiscount.PlaceholderText = ""
+        Me.txtStoreDiscount.ReadOnly = True
         Me.txtStoreDiscount.SelectedText = ""
         Me.txtStoreDiscount.ShadowDecoration.Enabled = True
         Me.txtStoreDiscount.ShadowDecoration.Parent = Me.txtStoreDiscount
@@ -1328,6 +1329,7 @@ Partial Class frmPlaceOrder
         Me.txtAccountDiscount.Name = "txtAccountDiscount"
         Me.txtAccountDiscount.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtAccountDiscount.PlaceholderText = ""
+        Me.txtAccountDiscount.ReadOnly = True
         Me.txtAccountDiscount.SelectedText = ""
         Me.txtAccountDiscount.ShadowDecoration.Enabled = True
         Me.txtAccountDiscount.ShadowDecoration.Parent = Me.txtAccountDiscount
