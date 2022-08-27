@@ -51,6 +51,29 @@ Public Class frmCreateNewAccountScreen
                 End If
             Next
 
+            If Not ValidPassword(txtInputPassword.Text) Then
+                BunifuLabel7.ForeColor = Color.Red
+                txtInputPassword.BorderColor = ErrorColor
+                txtInputPassword.FocusedState.BorderColor = ErrorColor
+                txtInputRetypePassword.BorderColor = ErrorColor
+                txtInputRetypePassword.FocusedState.BorderColor = ErrorColor
+                txtInputPassword.Focus()
+                txtInputPassword.Tag = "Invalid"
+                txtInputRetypePassword.Tag = "Invalid"
+            Else
+                BunifuLabel7.ForeColor = Color.FromArgb(96, 96, 96)
+            End If
+
+            If Not ValidUser(txtInputUsername.Text) Then
+                BunifuLabel6.ForeColor = Color.Red
+                txtInputUsername.BorderColor = ErrorColor
+                txtInputUsername.FocusedState.BorderColor = ErrorColor
+                txtInputUsername.Focus()
+                txtInputUsername.Tag = "Invalid"
+            Else
+                BunifuLabel6.ForeColor = Color.FromArgb(96, 96, 96)
+            End If
+
             If txtInputName.Tag = "Valid" AndAlso txtInputUsername.Tag = "Valid" AndAlso txtInputPassword.Tag = "Valid" AndAlso txtInputRetypePassword.Tag = "Valid" Then
                 txtNumber.Text = txtInputNumber.Text
                 txtName.Text = txtInputName.Text
@@ -136,7 +159,11 @@ Public Class frmCreateNewAccountScreen
 
     Private Sub btnDownload_Click(sender As Object, e As EventArgs) Handles btnDownload.Click
         Dim savePic As New SaveFileDialog
-        Dim Path As String = "D:\QRCodes\"
+        Dim Path As String = AppDomain.CurrentDomain.BaseDirectory.Replace("\bin\Debug\", "\Public\QRCodes\")
+
+        If Not System.IO.Directory.Exists(Path) Then
+            System.IO.Directory.CreateDirectory(Path)
+        End If
         Dim Dir As String = System.IO.Path.GetDirectoryName(Path)
 
         Dim title As String = "Xplore-Tech QRCode"
@@ -152,7 +179,7 @@ Public Class frmCreateNewAccountScreen
                 .Title = "Save Image As"
                 .Filter = "Jpg, Jpeg Images|*.jpg;*.jpeg|PNG Image|*.png|BMP Image|*.bmp"
                 .AddExtension = True
-                .FileName = "XploreTech-POS.jpg"
+                .FileName = txtName.Text & ".jpg"
                 .ValidateNames = True
                 .OverwritePrompt = True
                 .InitialDirectory = Dir
@@ -172,22 +199,9 @@ Public Class frmCreateNewAccountScreen
             End With
 
             Dim r As DialogResult
-            ActLog("Download QRCode: " & txtName.Text)
-            Dim msg As String = "Image saved successfully." & vbNewLine
-            msg &= "Open it now?"
+            Dim msg As String = "Image saved successfully."
 
-            r = MessageBox.Show(msg, title, btn, ico)
-
-            If r = System.Windows.Forms.DialogResult.Yes Then
-                Dim startinfo As New ProcessStartInfo("mspaint.exe")
-                startinfo.WindowStyle = ProcessWindowStyle.Maximized
-                startinfo.Arguments = Chr(34) & Dir & Chr(34) & "\" & System.IO.Path.GetFileName(savePic.FileName).ToString
-                Process.Start(startinfo)
-                Me.Close()
-            Else
-                Me.Close()
-                Return
-            End If
+            r = MessageBox.Show(msg, title, MessageBoxButtons.OK, ico)
 
         Catch ex As Exception
 
