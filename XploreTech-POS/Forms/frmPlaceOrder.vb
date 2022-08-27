@@ -74,6 +74,9 @@ Public Class frmPlaceOrder
         Dim mbxResult As DialogResult = MessageBox.Show(mbxMessage, mbxCaption, mbxButton)
 
         If mbxResult = DialogResult.Yes Then
+            If cmbxCustomerType.SelectedIndex = 0 And txtCustomerName.Text <> "" Or txtCustomerNumber.Text <> "" Or txtCustomerAddress.Text <> "" Then
+                InsertUnregCustomer(txtCustomerName.Text, txtCustomerNumber.Text, txtCustomerAddress.Text)
+            End If
 
             Do While GetTableColumnNumber(receiptNo, "transaction", "Receipt_ID", "Transaction_ID") > 0 'generate receipt number
                 receiptNo = CInt(Math.Floor(999999 * Rnd()))
@@ -141,6 +144,7 @@ Public Class frmPlaceOrder
             For i = 0 To productsOrder.product.Count - 1
                 Dim serviceTypeID As String = GetTableColumnNumber(cmbxServiceType.Text, "service_type", "Name", "Service_Type_ID")
                 Dim customerID As String = IIf(cmbxCustomerType.Text = "Regular", Nothing, GetTableColumnNumber(txtCustomerName.Text, "customer", "Name", "Customer_ID"))
+                Dim unregCustomerID As String = IIf(cmbxCustomerType.Text = "Regular", GetTableColumnString(txtCustomerName.Text, "unregistered_customer", "Name", "Unregistered_Customer_ID"), 1)
                 Dim customerTypeID As String = IIf(customerID = Nothing, Nothing, GetTableColumnNumber(customerID, "customer", "Customer_ID", "Customer_Type_ID"))
                 Dim milkteaID As String = IIf(MilkteaRowCount(frmPointOfSale.dgvSelectedItemList.Rows(i).Cells(0).Value) <> 0, productsOrder.product(i).ID, Nothing)
                 Dim AdditionalProductID As String = IIf(MilkteaRowCount(frmPointOfSale.dgvSelectedItemList.Rows(i).Cells(0).Value) <> 0, Nothing, productsOrder.product(i).ID)
@@ -152,12 +156,12 @@ Public Class frmPlaceOrder
                 End If
                 '
                 UpdateCupStock(productsOrder.product(i).Quantity, productsOrder.product(i).SizeID)
-
+                MsgBox(unregCustomerID)
                 InsertOrder(receiptNo, cmbxPaymentType.SelectedValue, serviceTypeID,
-                            LoggedUser.ID, customerID, milkteaID,
+                            LoggedUser.ID, customerID, unregCustomerID, milkteaID,
                             productsOrder.product(i).SizeID, productsOrder.product(i).Add_ons,
                             AdditionalProductID, productsOrder.product(i).Quantity,
-                            productsOrder.product(i).Price, lblPayment.Text, lblChange.Text)
+                            productsOrder.product(i).Price, lblPayment.Text, discount)
 
                 InsertTransac(transacID, GetTableColumnNumber(receiptNo,
                                                               "receipt",
@@ -173,6 +177,8 @@ Public Class frmPlaceOrder
                     EditNumberOfPurchase(0, customerID)
                 End If
             Next
+
+            LoadReport("Receipt", receiptNo)
 
             displaySnackbar(frmIndexScreen, "Order processed successfully!", Bunifu.UI.WinForms.BunifuSnackbar.MessageTypes.Success, DefaultDuration, "",
                                             Bunifu.UI.WinForms.BunifuSnackbar.Positions.BottomCenter, Bunifu.UI.WinForms.BunifuSnackbar.Hosts.FormOwner, snackbar)
@@ -204,7 +210,11 @@ Public Class frmPlaceOrder
         GetTotal()
     End Sub
     Private Sub txtCustomerName_TextChanged(sender As Object, e As EventArgs) Handles txtCustomerName.TextChanged
-        Dim bool As Boolean = IIf(txtCustomerName.Text <> "" And cmbxCustomerType.SelectedIndex > 0, True, False)
+        Dim bool As Boolean = True
+        If cmbxCustomerType.SelectedIndex > 0 Then
+            bool = IIf(txtCustomerName.Text <> "", True, False)
+        End If
+
         pnlPayment.Enabled = bool
     End Sub
 
@@ -234,7 +244,7 @@ Public Class frmPlaceOrder
         'compute
         Try
             storeDiscount = PromoSum(promoName)
-            payment += txtPayment.Text
+            payment += IIf(txtPayment.Text = "", 0, txtPayment.Text)
             serviceFee += txtServiceFee.Text
             discount += ((cmbxCustomerType.SelectedValue + storeDiscount) * subTotal)
             totalPrice += (subTotal - discount)
@@ -249,8 +259,17 @@ Public Class frmPlaceOrder
 
         End Try
 
-        Dim bool As Boolean = IIf(change >= 0, True, False)
+        Dim bool As Boolean = False
+
+        If change >= 0 Then
+            bool = True
+        End If
+
         btnPlaceOrder.Enabled = bool
+
+        If cmbxPaymentType.SelectedIndex > 0 Then
+            txtPayment.Text = totalPrice
+        End If
 
         Return totalPrice
 
@@ -275,4 +294,9 @@ Public Class frmPlaceOrder
         Return result
     End Function
 
+    Private Sub txtCustomerNumber_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCustomerNumber.KeyPress
+        If Not Char.IsNumber(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
 End Class

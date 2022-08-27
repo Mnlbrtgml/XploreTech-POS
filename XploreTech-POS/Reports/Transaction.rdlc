@@ -349,56 +349,6 @@
         <DataSourceName>dbpointofsaleDataSet</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
-      <Fields>
-        <Field Name="ID">
-          <DataField>ID</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Receipt_ID">
-          <DataField>Receipt_ID</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Payment_Type">
-          <DataField>Payment_Type</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Service_Type">
-          <DataField>Service_Type</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Transac_By">
-          <DataField>Transac_By</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Customer">
-          <DataField>Customer</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Product">
-          <DataField>Product</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Category">
-          <DataField>Category</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Product_Price">
-          <DataField>Product_Price</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Payment">
-          <DataField>Payment</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Change">
-          <DataField>Change</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Date_Processed">
-          <DataField>Date_Processed</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>dbpointofsaleDataSet</rd:DataSetName>
         <rd:SchemaPath>D:\repo\capstone\XploreTech-POS\XploreTech-POS\dbpointofsaleDataSet.xsd</rd:SchemaPath>

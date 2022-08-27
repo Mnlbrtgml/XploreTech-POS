@@ -185,14 +185,14 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Product_Name">
+                    <Textbox Name="Item">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!Item.Value</Value>
                               <Style>
                                 <FontSize>7pt</FontSize>
                               </Style>
@@ -203,7 +203,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Product_Name</rd:DefaultName>
+                      <rd:DefaultName>Item</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>White</Color>
@@ -221,14 +221,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Cup_Size">
+                    <Textbox Name="Size">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!Size.Value</Value>
                               <Style>
                                 <FontSize>7pt</FontSize>
                               </Style>
@@ -239,7 +239,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Cup_Size</rd:DefaultName>
+                      <rd:DefaultName>Size</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>White</Color>
@@ -264,7 +264,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!Quantity.Value</Value>
                               <Style>
                                 <FontSize>7pt</FontSize>
                               </Style>
@@ -300,7 +300,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!Price.Value</Value>
                               <Style>
                                 <FontSize>7pt</FontSize>
                               </Style>
@@ -349,6 +349,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
+        <DataSetName>reportDataSet</DataSetName>
         <Top>0.1in</Top>
         <Height>0.5in</Height>
         <Width>3.1496in</Width>
@@ -411,14 +412,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Payment">
+                    <Textbox Name="txtPayment">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!Payment.Value</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                               </Style>
@@ -429,7 +430,6 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Payment</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>White</Color>
@@ -462,6 +462,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
+        <DataSetName>reportDataSet</DataSetName>
         <Top>0.95in</Top>
         <Height>0.25in</Height>
         <Width>3.1496in</Width>
@@ -524,14 +525,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Payment2">
+                    <Textbox Name="txtTotal">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!Total.Value</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                               </Style>
@@ -542,7 +543,6 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Payment</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>White</Color>
@@ -575,6 +575,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
+        <DataSetName>reportDataSet</DataSetName>
         <Top>1.7in</Top>
         <Height>0.25in</Height>
         <Width>3.1496in</Width>
@@ -637,14 +638,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Price1">
+                    <Textbox Name="txtSubtotal">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!Subtotal.Value</Value>
                               <Style>
                                 <FontSize>7pt</FontSize>
                               </Style>
@@ -655,7 +656,6 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Price1</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>White</Color>
@@ -686,6 +686,7 @@
             <TablixMember />
           </TablixMembers>
         </TablixRowHierarchy>
+        <DataSetName>reportDataSet</DataSetName>
         <Top>0.7in</Top>
         <Height>0.25in</Height>
         <Width>3.1496in</Width>
@@ -748,14 +749,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Payment4">
+                    <Textbox Name="txtChange">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!Change.Value</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                               </Style>
@@ -766,7 +767,6 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Payment</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>White</Color>
@@ -799,6 +799,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
+        <DataSetName>reportDataSet</DataSetName>
         <Top>1.45in</Top>
         <Height>0.25in</Height>
         <Width>3.1496in</Width>
@@ -861,14 +862,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Payment3">
+                    <Textbox Name="txtDiscount">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!Discount.Value</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                               </Style>
@@ -879,7 +880,6 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Payment</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>White</Color>
@@ -912,6 +912,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
+        <DataSetName>reportDataSet</DataSetName>
         <Top>1.2in</Top>
         <Height>0.25in</Height>
         <Width>3.1496in</Width>
@@ -981,7 +982,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!Receipt_Number.Value</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                               </Style>
@@ -1023,6 +1024,7 @@
             <TablixMember />
           </TablixMembers>
         </TablixRowHierarchy>
+        <DataSetName>reportDataSet</DataSetName>
         <Top>2.05in</Top>
         <Height>0.25in</Height>
         <Width>3.1496in</Width>
@@ -1095,7 +1097,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!Processed_By.Value</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                               </Style>
@@ -1139,6 +1141,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
+        <DataSetName>reportDataSet</DataSetName>
         <Top>2.3in</Top>
         <Height>0.25in</Height>
         <Width>3.1496in</Width>
@@ -1211,7 +1214,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!Customer_Name.Value</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                               </Style>
@@ -1255,6 +1258,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
+        <DataSetName>reportDataSet</DataSetName>
         <Top>2.8in</Top>
         <Height>0.25in</Height>
         <Width>3.1496in</Width>
@@ -1327,7 +1331,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!Payment_Method.Value</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                               </Style>
@@ -1371,6 +1375,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
+        <DataSetName>reportDataSet</DataSetName>
         <Top>3.3in</Top>
         <Height>0.25in</Height>
         <Width>3.1496in</Width>
@@ -1443,7 +1448,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!Service_Method.Value</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                               </Style>
@@ -1487,6 +1492,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
+        <DataSetName>reportDataSet</DataSetName>
         <Top>3.55in</Top>
         <Height>0.25in</Height>
         <Width>3.1496in</Width>
@@ -1559,7 +1565,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!Date_Processed.Value</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                               </Style>
@@ -1603,6 +1609,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
+        <DataSetName>reportDataSet</DataSetName>
         <Top>2.55in</Top>
         <Height>0.25in</Height>
         <Width>3.1496in</Width>
@@ -1675,7 +1682,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!Customer_Add.Value</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                               </Style>
@@ -1719,6 +1726,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
+        <DataSetName>reportDataSet</DataSetName>
         <Top>3.05in</Top>
         <Height>0.25in</Height>
         <Width>3.1496in</Width>
@@ -1908,6 +1916,97 @@
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="dbpointofsaleDataSet">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>fe10e1a8-c505-48c2-8708-fff42000c36c</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="reportDataSet">
+      <Query>
+        <DataSourceName>dbpointofsaleDataSet</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Receipt_Number">
+          <DataField>Receipt_Number</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Processed_By">
+          <DataField>Processed_By</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Date_Processed">
+          <DataField>Date_Processed</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Customer_Name">
+          <DataField>Customer_Name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Customer_Add">
+          <DataField>Customer_Add</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Payment_Method">
+          <DataField>Payment_Method</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Service_Method">
+          <DataField>Service_Method</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Item">
+          <DataField>Item</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Size">
+          <DataField>Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Quantity">
+          <DataField>Quantity</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Price">
+          <DataField>Price</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Payment">
+          <DataField>Payment</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Discount">
+          <DataField>Discount</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Subtotal">
+          <DataField>Subtotal</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Change">
+          <DataField>Change</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Total">
+          <DataField>Total</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>dbpointofsaleDataSet</rd:DataSetName>
+        <rd:SchemaPath>D:\repo\capstone\XploreTech-POS\XploreTech-POS\dbpointofsaleDataSet.xsd</rd:SchemaPath>
+        <rd:TableName>ReportReceipt</rd:TableName>
+        <rd:TableAdapterFillMethod />
+        <rd:TableAdapterGetDataMethod />
+        <rd:TableAdapterName />
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>3c670364-01ed-4aef-aa37-8f9b40ebc4f3</rd:ReportID>
 </Report>
