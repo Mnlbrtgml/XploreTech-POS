@@ -61,6 +61,8 @@ Public Class frmPointOfSale
                     dr.Cells(5).Value += orderPrice + toppingsTotalPrice
 
                     pnlSelectedItem.Enabled = True
+                    txtItemPrice.Text = GetSubtotal()
+                    ResetRightPanelControls()
                     ResetLeftPanelControls()
 
                     Exit Sub
