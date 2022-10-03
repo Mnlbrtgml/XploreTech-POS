@@ -33,7 +33,7 @@ Partial Class frmIndexScreen
         Me.pnlControl = New Bunifu.UI.WinForms.BunifuPanel()
         Me.btnMinimize = New Guna.UI2.WinForms.Guna2ControlBox()
         Me.btnClose = New Guna.UI2.WinForms.Guna2ControlBox()
-        Me.BunifuLabel15 = New Bunifu.UI.WinForms.BunifuLabel()
+        Me.lblIndexScreenTitle = New Bunifu.UI.WinForms.BunifuLabel()
         Me.snackbar = New Bunifu.UI.WinForms.BunifuSnackbar(Me.components)
         Me.shape = New Bunifu.UI.WinForms.BunifuShapes()
         Me.lblAccountName = New Bunifu.UI.WinForms.BunifuLabel()
@@ -147,7 +147,7 @@ Partial Class frmIndexScreen
         Me.pnlControl.BorderThickness = 0
         Me.pnlControl.Controls.Add(Me.btnMinimize)
         Me.pnlControl.Controls.Add(Me.btnClose)
-        Me.pnlControl.Controls.Add(Me.BunifuLabel15)
+        Me.pnlControl.Controls.Add(Me.lblIndexScreenTitle)
         Me.pnlControl.Dock = System.Windows.Forms.DockStyle.Top
         Me.pnlControl.Location = New System.Drawing.Point(0, 0)
         Me.pnlControl.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
@@ -185,22 +185,22 @@ Partial Class frmIndexScreen
         Me.btnClose.Size = New System.Drawing.Size(45, 34)
         Me.btnClose.TabIndex = 1
         '
-        'BunifuLabel15
+        'lblIndexScreenTitle
         '
-        Me.BunifuLabel15.AllowParentOverrides = False
-        Me.BunifuLabel15.AutoEllipsis = False
-        Me.BunifuLabel15.CursorType = Nothing
-        Me.BunifuLabel15.Font = New System.Drawing.Font("Roboto", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BunifuLabel15.Location = New System.Drawing.Point(7, 9)
-        Me.BunifuLabel15.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.BunifuLabel15.Name = "BunifuLabel15"
-        Me.BunifuLabel15.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.BunifuLabel15.Size = New System.Drawing.Size(175, 15)
-        Me.BunifuLabel15.TabIndex = 99
-        Me.BunifuLabel15.TabStop = False
-        Me.BunifuLabel15.Text = "D'Creamy Milktea House | Admin"
-        Me.BunifuLabel15.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.BunifuLabel15.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.[Default]
+        Me.lblIndexScreenTitle.AllowParentOverrides = False
+        Me.lblIndexScreenTitle.AutoEllipsis = False
+        Me.lblIndexScreenTitle.CursorType = Nothing
+        Me.lblIndexScreenTitle.Font = New System.Drawing.Font("Roboto", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblIndexScreenTitle.Location = New System.Drawing.Point(7, 9)
+        Me.lblIndexScreenTitle.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.lblIndexScreenTitle.Name = "lblIndexScreenTitle"
+        Me.lblIndexScreenTitle.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblIndexScreenTitle.Size = New System.Drawing.Size(221, 19)
+        Me.lblIndexScreenTitle.TabIndex = 99
+        Me.lblIndexScreenTitle.TabStop = False
+        Me.lblIndexScreenTitle.Text = "D'Creamy Milktea House | Admin"
+        Me.lblIndexScreenTitle.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblIndexScreenTitle.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.[Default]
         '
         'snackbar
         '
@@ -439,7 +439,7 @@ Partial Class frmIndexScreen
         '
         'frmIndexScreen
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 14.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(249, Byte), Integer), CType(CType(209, Byte), Integer), CType(CType(200, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1180, 680)
@@ -471,7 +471,7 @@ Partial Class frmIndexScreen
     Friend WithEvents pnlControl As Bunifu.UI.WinForms.BunifuPanel
     Friend WithEvents btnMinimize As Guna.UI2.WinForms.Guna2ControlBox
     Friend WithEvents btnClose As Guna.UI2.WinForms.Guna2ControlBox
-    Friend WithEvents BunifuLabel15 As Bunifu.UI.WinForms.BunifuLabel
+    Friend WithEvents lblIndexScreenTitle As Bunifu.UI.WinForms.BunifuLabel
     Friend WithEvents pnlChildForm As Bunifu.UI.WinForms.BunifuPanel
     Friend WithEvents btnDashboard As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents btnPointOfSale As Guna.UI2.WinForms.Guna2Button

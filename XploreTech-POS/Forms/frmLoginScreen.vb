@@ -148,9 +148,11 @@ Public Class frmLoginScreen
                 txtUsername.Clear()
                 txtPassword.Clear()
                 Dim IndexForm As New frmIndexScreen()
+                IndexForm.lblIndexScreenTitle.Text = "D'Creamy Milktea House | Admin"
                 IndexForm.lblAccountName.Text = LoggedUser.FullName
                 IndexForm.lblAccountUsernameId.Text = LoggedUser.Username
                 If LoggedUser.UserType = "Cashier" Then
+                    IndexForm.lblIndexScreenTitle.Text = "D'Creamy Milktea House | Cashier"
                     IndexForm.btnInventorySettings.Hide()
                     IndexForm.btnOtherSettings.Location = New Point(25, 407)
                     IndexForm.btnReports.Location = New Point(25, 449)

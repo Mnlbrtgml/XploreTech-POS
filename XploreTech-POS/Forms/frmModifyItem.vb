@@ -35,7 +35,6 @@ Public Class frmModifyItem
             Textbox02.Show()
             Textbox03.Show()
             Combobox.Show()
-            Textbox03.ReadOnly = True
 
             If Me.Tag = "Edit" Then
                 Button01.Location = New Point(25, 309)
@@ -44,6 +43,7 @@ Public Class frmModifyItem
                 Textbox01.Text = drOthers.Cells("Account Name").Value.ToString
                 Textbox02.Text = drOthers.Cells("Username").Value.ToString
                 Textbox03.Text = DecryptPassword(GetTableColumnString(drOthers.Cells("Account Name").Value.ToString, "user", "Full_Name", "Password"))
+                Textbox03.ReadOnly = True
                 Combobox.SelectedItem = drOthers.Cells("Account Type").Value.ToString
             Else
                 Label05.Text = "Re-type password"
