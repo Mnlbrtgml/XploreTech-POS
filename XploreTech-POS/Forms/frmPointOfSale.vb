@@ -57,7 +57,7 @@ Public Class frmPointOfSale
                 Dim dr As DataGridViewRow = dgvSelectedItemList.Rows(i)
                 Dim rowConcat As String = dr.Cells(0).Value.ToString & dr.Cells(1).Value.ToString & dr.Cells(3).Value.ToString & dr.Cells(4).Value.ToString
                 If orderConcat = rowConcat Then
-                    dr.Cells(2).Value += IIf(txtQuantity.Text > 0, txtQuantity.Text, 1)
+                    dr.Cells(2).Value += IIf(txtQuantity.Text > 0, Convert.ToInt32(txtQuantity.Text), 1)
                     dr.Cells(5).Value += orderPrice + toppingsTotalPrice
 
                     pnlSelectedItem.Enabled = True

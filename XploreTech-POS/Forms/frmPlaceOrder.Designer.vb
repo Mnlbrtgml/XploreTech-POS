@@ -122,6 +122,7 @@ Partial Class frmPlaceOrder
         Me.btnShowCustomerList.BorderRadius = 6
         Me.btnShowCustomerList.CheckedState.Parent = Me.btnShowCustomerList
         Me.btnShowCustomerList.CustomImages.Parent = Me.btnShowCustomerList
+        Me.btnShowCustomerList.Enabled = False
         Me.btnShowCustomerList.FillColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(92, Byte), Integer))
         Me.btnShowCustomerList.Font = New System.Drawing.Font("Roboto", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnShowCustomerList.ForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
