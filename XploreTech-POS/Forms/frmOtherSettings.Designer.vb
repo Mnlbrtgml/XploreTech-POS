@@ -32,10 +32,11 @@ Partial Class frmOtherSettings
         Me.pnlOtherSettings = New Guna.UI2.WinForms.Guna2Panel()
         Me.btnAdd = New Guna.UI2.WinForms.Guna2Button()
         Me.pnlTableShadow = New Guna.UI2.WinForms.Guna2Panel()
+        Me.dgvTable = New Bunifu.UI.WinForms.BunifuDataGridView()
         Me.cmbxSettings = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.txtSearch = New Guna.UI2.WinForms.Guna2TextBox()
         Me.elipse = New Bunifu.Framework.UI.BunifuElipse(Me.components)
-        Me.dgvTable = New Bunifu.UI.WinForms.BunifuDataGridView()
+        Me.btnGenerateMyQR = New Guna.UI2.WinForms.Guna2Button()
         Me.pnlOtherSettings.SuspendLayout()
         Me.pnlTableShadow.SuspendLayout()
         CType(Me.dgvTable, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -46,6 +47,7 @@ Partial Class frmOtherSettings
         Me.pnlOtherSettings.BackColor = System.Drawing.Color.Transparent
         Me.pnlOtherSettings.BorderColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(163, Byte), Integer), CType(CType(146, Byte), Integer))
         Me.pnlOtherSettings.BorderRadius = 6
+        Me.pnlOtherSettings.Controls.Add(Me.btnGenerateMyQR)
         Me.pnlOtherSettings.Controls.Add(Me.btnAdd)
         Me.pnlOtherSettings.Controls.Add(Me.pnlTableShadow)
         Me.pnlOtherSettings.Controls.Add(Me.cmbxSettings)
@@ -94,76 +96,6 @@ Partial Class frmOtherSettings
         Me.pnlTableShadow.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 5, 5)
         Me.pnlTableShadow.Size = New System.Drawing.Size(879, 485)
         Me.pnlTableShadow.TabIndex = 5
-        '
-        'cmbxSettings
-        '
-        Me.cmbxSettings.BackColor = System.Drawing.Color.Transparent
-        Me.cmbxSettings.BorderColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(92, Byte), Integer))
-        Me.cmbxSettings.BorderRadius = 6
-        Me.cmbxSettings.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.cmbxSettings.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbxSettings.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(99, Byte), Integer), CType(CType(78, Byte), Integer))
-        Me.cmbxSettings.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(99, Byte), Integer), CType(CType(78, Byte), Integer))
-        Me.cmbxSettings.FocusedState.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.cmbxSettings.FocusedState.Parent = Me.cmbxSettings
-        Me.cmbxSettings.Font = New System.Drawing.Font("Roboto", 8.0!)
-        Me.cmbxSettings.ForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        Me.cmbxSettings.FormattingEnabled = True
-        Me.cmbxSettings.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(219, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(137, Byte), Integer))
-        Me.cmbxSettings.HoverState.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.cmbxSettings.HoverState.Parent = Me.cmbxSettings
-        Me.cmbxSettings.ItemHeight = 30
-        Me.cmbxSettings.Items.AddRange(New Object() {"User Account Settings", "Customer Settings", "Customer Type Settings", "Promo Settings", "Service Type Settings"})
-        Me.cmbxSettings.ItemsAppearance.BackColor = System.Drawing.Color.White
-        Me.cmbxSettings.ItemsAppearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        Me.cmbxSettings.ItemsAppearance.Parent = Me.cmbxSettings
-        Me.cmbxSettings.ItemsAppearance.SelectedBackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(92, Byte), Integer))
-        Me.cmbxSettings.ItemsAppearance.SelectedFont = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.cmbxSettings.ItemsAppearance.SelectedForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        Me.cmbxSettings.Location = New System.Drawing.Point(331, 25)
-        Me.cmbxSettings.Name = "cmbxSettings"
-        Me.cmbxSettings.ShadowDecoration.Enabled = True
-        Me.cmbxSettings.ShadowDecoration.Parent = Me.cmbxSettings
-        Me.cmbxSettings.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 5, 5)
-        Me.cmbxSettings.Size = New System.Drawing.Size(200, 36)
-        Me.cmbxSettings.StartIndex = 0
-        Me.cmbxSettings.TabIndex = 3
-        Me.cmbxSettings.TextOffset = New System.Drawing.Point(1, 2)
-        '
-        'txtSearch
-        '
-        Me.txtSearch.Animated = True
-        Me.txtSearch.BackColor = System.Drawing.Color.Transparent
-        Me.txtSearch.BorderColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(92, Byte), Integer))
-        Me.txtSearch.BorderRadius = 6
-        Me.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtSearch.DefaultText = ""
-        Me.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.txtSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.txtSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.txtSearch.DisabledState.Parent = Me.txtSearch
-        Me.txtSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.txtSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(99, Byte), Integer), CType(CType(78, Byte), Integer))
-        Me.txtSearch.FocusedState.Parent = Me.txtSearch
-        Me.txtSearch.Font = New System.Drawing.Font("Roboto", 8.0!)
-        Me.txtSearch.ForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        Me.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(219, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(137, Byte), Integer))
-        Me.txtSearch.HoverState.Parent = Me.txtSearch
-        Me.txtSearch.Location = New System.Drawing.Point(25, 25)
-        Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.txtSearch.PlaceholderText = "Search"
-        Me.txtSearch.SelectedText = ""
-        Me.txtSearch.ShadowDecoration.Enabled = True
-        Me.txtSearch.ShadowDecoration.Parent = Me.txtSearch
-        Me.txtSearch.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 5, 5)
-        Me.txtSearch.Size = New System.Drawing.Size(300, 36)
-        Me.txtSearch.TabIndex = 2
-        '
-        'elipse
-        '
-        Me.elipse.ElipseRadius = 5
-        Me.elipse.TargetControl = Me
         '
         'dgvTable
         '
@@ -236,6 +168,7 @@ Partial Class frmOtherSettings
         DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgvTable.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.dgvTable.RowHeadersVisible = False
+        Me.dgvTable.RowHeadersWidth = 51
         Me.dgvTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle5.BackColor = System.Drawing.Color.White
@@ -251,6 +184,99 @@ Partial Class frmOtherSettings
         Me.dgvTable.Size = New System.Drawing.Size(878, 484)
         Me.dgvTable.TabIndex = 7
         Me.dgvTable.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light
+        '
+        'cmbxSettings
+        '
+        Me.cmbxSettings.BackColor = System.Drawing.Color.Transparent
+        Me.cmbxSettings.BorderColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(92, Byte), Integer))
+        Me.cmbxSettings.BorderRadius = 6
+        Me.cmbxSettings.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.cmbxSettings.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbxSettings.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(99, Byte), Integer), CType(CType(78, Byte), Integer))
+        Me.cmbxSettings.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(99, Byte), Integer), CType(CType(78, Byte), Integer))
+        Me.cmbxSettings.FocusedState.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
+        Me.cmbxSettings.FocusedState.Parent = Me.cmbxSettings
+        Me.cmbxSettings.Font = New System.Drawing.Font("Roboto", 8.0!)
+        Me.cmbxSettings.ForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        Me.cmbxSettings.FormattingEnabled = True
+        Me.cmbxSettings.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(219, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(137, Byte), Integer))
+        Me.cmbxSettings.HoverState.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
+        Me.cmbxSettings.HoverState.Parent = Me.cmbxSettings
+        Me.cmbxSettings.ItemHeight = 30
+        Me.cmbxSettings.Items.AddRange(New Object() {"User Account Settings", "Customer Settings", "Customer Type Settings", "Promo Settings", "Service Type Settings"})
+        Me.cmbxSettings.ItemsAppearance.BackColor = System.Drawing.Color.White
+        Me.cmbxSettings.ItemsAppearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        Me.cmbxSettings.ItemsAppearance.Parent = Me.cmbxSettings
+        Me.cmbxSettings.ItemsAppearance.SelectedBackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(92, Byte), Integer))
+        Me.cmbxSettings.ItemsAppearance.SelectedFont = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
+        Me.cmbxSettings.ItemsAppearance.SelectedForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        Me.cmbxSettings.Location = New System.Drawing.Point(331, 25)
+        Me.cmbxSettings.Name = "cmbxSettings"
+        Me.cmbxSettings.ShadowDecoration.Enabled = True
+        Me.cmbxSettings.ShadowDecoration.Parent = Me.cmbxSettings
+        Me.cmbxSettings.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 5, 5)
+        Me.cmbxSettings.Size = New System.Drawing.Size(200, 36)
+        Me.cmbxSettings.StartIndex = 0
+        Me.cmbxSettings.TabIndex = 3
+        Me.cmbxSettings.TextOffset = New System.Drawing.Point(1, 2)
+        '
+        'txtSearch
+        '
+        Me.txtSearch.Animated = True
+        Me.txtSearch.BackColor = System.Drawing.Color.Transparent
+        Me.txtSearch.BorderColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(92, Byte), Integer))
+        Me.txtSearch.BorderRadius = 6
+        Me.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtSearch.DefaultText = ""
+        Me.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.txtSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.txtSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtSearch.DisabledState.Parent = Me.txtSearch
+        Me.txtSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(99, Byte), Integer), CType(CType(78, Byte), Integer))
+        Me.txtSearch.FocusedState.Parent = Me.txtSearch
+        Me.txtSearch.Font = New System.Drawing.Font("Roboto", 8.0!)
+        Me.txtSearch.ForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        Me.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(219, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(137, Byte), Integer))
+        Me.txtSearch.HoverState.Parent = Me.txtSearch
+        Me.txtSearch.Location = New System.Drawing.Point(25, 25)
+        Me.txtSearch.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.txtSearch.PlaceholderText = "Search"
+        Me.txtSearch.SelectedText = ""
+        Me.txtSearch.ShadowDecoration.Enabled = True
+        Me.txtSearch.ShadowDecoration.Parent = Me.txtSearch
+        Me.txtSearch.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 5, 5)
+        Me.txtSearch.Size = New System.Drawing.Size(300, 36)
+        Me.txtSearch.TabIndex = 2
+        '
+        'elipse
+        '
+        Me.elipse.ElipseRadius = 5
+        Me.elipse.TargetControl = Me
+        '
+        'btnGenerateMyQR
+        '
+        Me.btnGenerateMyQR.Animated = True
+        Me.btnGenerateMyQR.BackColor = System.Drawing.Color.Transparent
+        Me.btnGenerateMyQR.BorderRadius = 6
+        Me.btnGenerateMyQR.CheckedState.Parent = Me.btnGenerateMyQR
+        Me.btnGenerateMyQR.CustomImages.Parent = Me.btnGenerateMyQR
+        Me.btnGenerateMyQR.FillColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(92, Byte), Integer))
+        Me.btnGenerateMyQR.Font = New System.Drawing.Font("Roboto", 8.0!)
+        Me.btnGenerateMyQR.ForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        Me.btnGenerateMyQR.HoverState.Parent = Me.btnGenerateMyQR
+        Me.btnGenerateMyQR.Location = New System.Drawing.Point(598, 25)
+        Me.btnGenerateMyQR.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.btnGenerateMyQR.Name = "btnGenerateMyQR"
+        Me.btnGenerateMyQR.ShadowDecoration.Enabled = True
+        Me.btnGenerateMyQR.ShadowDecoration.Parent = Me.btnGenerateMyQR
+        Me.btnGenerateMyQR.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 5, 5)
+        Me.btnGenerateMyQR.Size = New System.Drawing.Size(150, 36)
+        Me.btnGenerateMyQR.TabIndex = 15
+        Me.btnGenerateMyQR.Text = "Generate my QRCode"
+        Me.btnGenerateMyQR.Visible = False
         '
         'frmOtherSettings
         '
@@ -278,4 +304,5 @@ Partial Class frmOtherSettings
     Friend WithEvents elipse As Bunifu.Framework.UI.BunifuElipse
     Friend WithEvents btnAdd As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents dgvTable As Bunifu.UI.WinForms.BunifuDataGridView
+    Friend WithEvents btnGenerateMyQR As Guna.UI2.WinForms.Guna2Button
 End Class
