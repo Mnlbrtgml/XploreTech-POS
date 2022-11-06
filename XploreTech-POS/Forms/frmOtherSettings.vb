@@ -8,15 +8,17 @@
         LoadAccountTable(dgvTable)
         LoadActionButton(dgvTable)
         txtSearch.Focus()
+        btnGenerateMyQR.Show()
     End Sub
 
     Private Sub cmbxSettings_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbxSettings.SelectedIndexChanged
         dgvTable.Columns.Clear()
-
+        btnGenerateMyQR.Hide()
         If cmbxSettings.SelectedItem = "User Account Settings" Then
             LoadAccountTable(dgvTable)
             btnAdd.Text = "Add new account"
             btnAdd.Show()
+            btnGenerateMyQR.Show()
         ElseIf cmbxSettings.SelectedItem = "Customer Settings" Then
             LoadCustomerListTable(dgvTable)
             btnAdd.Text = "Add new customer"
@@ -124,4 +126,8 @@
         End Try
     End Sub
 
+    Private Sub btnGenerateMyQR_Click(sender As Object, e As EventArgs) Handles btnGenerateMyQR.Click
+        Dim frmQR As New frmGenerateQRCode
+        frmQR.ShowDialog()
+    End Sub
 End Class

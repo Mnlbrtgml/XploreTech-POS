@@ -48,7 +48,7 @@ Public Class frmIndexScreen
     End Sub
 
     Private Sub btnOtherSettings_Click(sender As Object, e As EventArgs) Handles btnOtherSettings.Click
-        displayForm(frmOtherSettings)
+        displayForm(IIf(LoggedUser.UserType = "Admin", frmOtherSettings, frmCashierSettings))
     End Sub
 
     Private Sub btnReports_Click(sender As Object, e As EventArgs) Handles btnReports.Click

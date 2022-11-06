@@ -22,11 +22,12 @@ Partial Class frmCashierSettings
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCashierSettings))
         Me.pnlGroupA = New Guna.UI2.WinForms.Guna2Panel()
         Me.pnlQRInformation = New Bunifu.UI.WinForms.BunifuPanel()
+        Me.pcbQRCode = New System.Windows.Forms.PictureBox()
         Me.lblQRCodeWarning = New Bunifu.UI.WinForms.BunifuLabel()
-        Me.picQRCode = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.btnDownload = New Guna.UI2.WinForms.Guna2Button()
         Me.btnEditAccount = New Guna.UI2.WinForms.Guna2Button()
         Me.pnlAccountInformation = New Bunifu.UI.WinForms.BunifuPanel()
@@ -44,9 +45,10 @@ Partial Class frmCashierSettings
         Me.txtNumber = New Guna.UI2.WinForms.Guna2TextBox()
         Me.txtUsername = New Guna.UI2.WinForms.Guna2TextBox()
         Me.txtType = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.snackbar = New Bunifu.UI.WinForms.BunifuSnackbar(Me.components)
         Me.pnlGroupA.SuspendLayout()
         Me.pnlQRInformation.SuspendLayout()
-        CType(Me.picQRCode, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pcbQRCode, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlAccountInformation.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -75,13 +77,22 @@ Partial Class frmCashierSettings
         Me.pnlQRInformation.BorderRadius = 0
         Me.pnlQRInformation.BorderThickness = 0
         Me.pnlQRInformation.Controls.Add(Me.lblQRCodeWarning)
-        Me.pnlQRInformation.Controls.Add(Me.picQRCode)
+        Me.pnlQRInformation.Controls.Add(Me.pcbQRCode)
         Me.pnlQRInformation.Controls.Add(Me.btnDownload)
         Me.pnlQRInformation.Location = New System.Drawing.Point(529, 128)
         Me.pnlQRInformation.Name = "pnlQRInformation"
         Me.pnlQRInformation.ShowBorders = True
         Me.pnlQRInformation.Size = New System.Drawing.Size(296, 340)
         Me.pnlQRInformation.TabIndex = 2
+        '
+        'pcbQRCode
+        '
+        Me.pcbQRCode.Location = New System.Drawing.Point(10, 0)
+        Me.pcbQRCode.Name = "pcbQRCode"
+        Me.pcbQRCode.Size = New System.Drawing.Size(276, 276)
+        Me.pcbQRCode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pcbQRCode.TabIndex = 2
+        Me.pcbQRCode.TabStop = False
         '
         'lblQRCodeWarning
         '
@@ -91,33 +102,17 @@ Partial Class frmCashierSettings
         Me.lblQRCodeWarning.BackColor = System.Drawing.Color.White
         Me.lblQRCodeWarning.CursorType = Nothing
         Me.lblQRCodeWarning.Font = New System.Drawing.Font("Roboto", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblQRCodeWarning.Location = New System.Drawing.Point(46, 139)
+        Me.lblQRCodeWarning.Location = New System.Drawing.Point(43, 121)
         Me.lblQRCodeWarning.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.lblQRCodeWarning.Name = "lblQRCodeWarning"
         Me.lblQRCodeWarning.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.lblQRCodeWarning.Size = New System.Drawing.Size(205, 19)
+        Me.lblQRCodeWarning.Size = New System.Drawing.Size(207, 40)
         Me.lblQRCodeWarning.TabIndex = 1
         Me.lblQRCodeWarning.TabStop = False
         Me.lblQRCodeWarning.Text = "There is problem generating qr code"
         Me.lblQRCodeWarning.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
         Me.lblQRCodeWarning.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.[Default]
         Me.lblQRCodeWarning.Visible = False
-        '
-        'picQRCode
-        '
-        Me.picQRCode.BackColor = System.Drawing.Color.Transparent
-        Me.picQRCode.BorderRadius = 6
-        Me.picQRCode.FillColor = System.Drawing.Color.White
-        Me.picQRCode.Location = New System.Drawing.Point(10, 10)
-        Me.picQRCode.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.picQRCode.Name = "picQRCode"
-        Me.picQRCode.ShadowDecoration.Enabled = True
-        Me.picQRCode.ShadowDecoration.Parent = Me.picQRCode
-        Me.picQRCode.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 5, 5)
-        Me.picQRCode.Size = New System.Drawing.Size(276, 276)
-        Me.picQRCode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.picQRCode.TabIndex = 24
-        Me.picQRCode.TabStop = False
         '
         'btnDownload
         '
@@ -347,10 +342,10 @@ Partial Class frmCashierSettings
         Me.txtRetypePassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(219, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(137, Byte), Integer))
         Me.txtRetypePassword.HoverState.Parent = Me.txtRetypePassword
         Me.txtRetypePassword.Location = New System.Drawing.Point(10, 359)
+        Me.txtRetypePassword.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtRetypePassword.Name = "txtRetypePassword"
         Me.txtRetypePassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtRetypePassword.PlaceholderText = "Password"
-        Me.txtRetypePassword.ReadOnly = True
         Me.txtRetypePassword.SelectedText = ""
         Me.txtRetypePassword.ShadowDecoration.Enabled = True
         Me.txtRetypePassword.ShadowDecoration.Parent = Me.txtRetypePassword
@@ -399,10 +394,10 @@ Partial Class frmCashierSettings
         Me.txtPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(219, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(137, Byte), Integer))
         Me.txtPassword.HoverState.Parent = Me.txtPassword
         Me.txtPassword.Location = New System.Drawing.Point(10, 294)
+        Me.txtPassword.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtPassword.PlaceholderText = "Password"
-        Me.txtPassword.ReadOnly = True
         Me.txtPassword.SelectedText = ""
         Me.txtPassword.ShadowDecoration.Enabled = True
         Me.txtPassword.ShadowDecoration.Parent = Me.txtPassword
@@ -431,10 +426,10 @@ Partial Class frmCashierSettings
         Me.txtName.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(219, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(137, Byte), Integer))
         Me.txtName.HoverState.Parent = Me.txtName
         Me.txtName.Location = New System.Drawing.Point(10, 99)
+        Me.txtName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtName.Name = "txtName"
         Me.txtName.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtName.PlaceholderText = "Account name"
-        Me.txtName.ReadOnly = True
         Me.txtName.SelectedText = ""
         Me.txtName.ShadowDecoration.Enabled = True
         Me.txtName.ShadowDecoration.Parent = Me.txtName
@@ -463,10 +458,10 @@ Partial Class frmCashierSettings
         Me.txtNumber.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(219, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(137, Byte), Integer))
         Me.txtNumber.HoverState.Parent = Me.txtNumber
         Me.txtNumber.Location = New System.Drawing.Point(10, 34)
+        Me.txtNumber.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtNumber.Name = "txtNumber"
         Me.txtNumber.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtNumber.PlaceholderText = "Account number"
-        Me.txtNumber.ReadOnly = True
         Me.txtNumber.SelectedText = ""
         Me.txtNumber.ShadowDecoration.Enabled = True
         Me.txtNumber.ShadowDecoration.Parent = Me.txtNumber
@@ -495,10 +490,10 @@ Partial Class frmCashierSettings
         Me.txtUsername.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(219, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(137, Byte), Integer))
         Me.txtUsername.HoverState.Parent = Me.txtUsername
         Me.txtUsername.Location = New System.Drawing.Point(10, 229)
+        Me.txtUsername.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtUsername.Name = "txtUsername"
         Me.txtUsername.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtUsername.PlaceholderText = "Username"
-        Me.txtUsername.ReadOnly = True
         Me.txtUsername.SelectedText = ""
         Me.txtUsername.ShadowDecoration.Enabled = True
         Me.txtUsername.ShadowDecoration.Parent = Me.txtUsername
@@ -527,10 +522,10 @@ Partial Class frmCashierSettings
         Me.txtType.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(219, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(137, Byte), Integer))
         Me.txtType.HoverState.Parent = Me.txtType
         Me.txtType.Location = New System.Drawing.Point(10, 164)
+        Me.txtType.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtType.Name = "txtType"
         Me.txtType.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtType.PlaceholderText = "Account type"
-        Me.txtType.ReadOnly = True
         Me.txtType.SelectedText = ""
         Me.txtType.ShadowDecoration.Enabled = True
         Me.txtType.ShadowDecoration.Parent = Me.txtType
@@ -539,9 +534,78 @@ Partial Class frmCashierSettings
         Me.txtType.TabIndex = 13
         Me.txtType.TabStop = False
         '
+        'snackbar
+        '
+        Me.snackbar.AllowDragging = False
+        Me.snackbar.AllowMultipleViews = True
+        Me.snackbar.ClickToClose = True
+        Me.snackbar.DoubleClickToClose = True
+        Me.snackbar.DurationAfterIdle = 3000
+        Me.snackbar.ErrorOptions.ActionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.snackbar.ErrorOptions.ActionBorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.snackbar.ErrorOptions.ActionBorderRadius = 1
+        Me.snackbar.ErrorOptions.ActionFont = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.snackbar.ErrorOptions.ActionForeColor = System.Drawing.Color.Black
+        Me.snackbar.ErrorOptions.BackColor = System.Drawing.Color.White
+        Me.snackbar.ErrorOptions.BorderColor = System.Drawing.Color.White
+        Me.snackbar.ErrorOptions.CloseIconColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(199, Byte), Integer))
+        Me.snackbar.ErrorOptions.Font = New System.Drawing.Font("Segoe UI", 9.75!)
+        Me.snackbar.ErrorOptions.ForeColor = System.Drawing.Color.Black
+        Me.snackbar.ErrorOptions.Icon = CType(resources.GetObject("resource.Icon"), System.Drawing.Image)
+        Me.snackbar.ErrorOptions.IconLeftMargin = 12
+        Me.snackbar.FadeCloseIcon = False
+        Me.snackbar.Host = Bunifu.UI.WinForms.BunifuSnackbar.Hosts.FormOwner
+        Me.snackbar.InformationOptions.ActionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.snackbar.InformationOptions.ActionBorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.snackbar.InformationOptions.ActionBorderRadius = 1
+        Me.snackbar.InformationOptions.ActionFont = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.snackbar.InformationOptions.ActionForeColor = System.Drawing.Color.Black
+        Me.snackbar.InformationOptions.BackColor = System.Drawing.Color.White
+        Me.snackbar.InformationOptions.BorderColor = System.Drawing.Color.White
+        Me.snackbar.InformationOptions.CloseIconColor = System.Drawing.Color.FromArgb(CType(CType(145, Byte), Integer), CType(CType(213, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.snackbar.InformationOptions.Font = New System.Drawing.Font("Segoe UI", 9.75!)
+        Me.snackbar.InformationOptions.ForeColor = System.Drawing.Color.Black
+        Me.snackbar.InformationOptions.Icon = CType(resources.GetObject("resource.Icon1"), System.Drawing.Image)
+        Me.snackbar.InformationOptions.IconLeftMargin = 12
+        Me.snackbar.Margin = 10
+        Me.snackbar.MaximumSize = New System.Drawing.Size(0, 0)
+        Me.snackbar.MaximumViews = 7
+        Me.snackbar.MessageRightMargin = 15
+        Me.snackbar.MinimumSize = New System.Drawing.Size(0, 0)
+        Me.snackbar.ShowBorders = False
+        Me.snackbar.ShowCloseIcon = False
+        Me.snackbar.ShowIcon = True
+        Me.snackbar.ShowShadows = True
+        Me.snackbar.SuccessOptions.ActionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.snackbar.SuccessOptions.ActionBorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.snackbar.SuccessOptions.ActionBorderRadius = 1
+        Me.snackbar.SuccessOptions.ActionFont = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.snackbar.SuccessOptions.ActionForeColor = System.Drawing.Color.Black
+        Me.snackbar.SuccessOptions.BackColor = System.Drawing.Color.White
+        Me.snackbar.SuccessOptions.BorderColor = System.Drawing.Color.White
+        Me.snackbar.SuccessOptions.CloseIconColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(237, Byte), Integer))
+        Me.snackbar.SuccessOptions.Font = New System.Drawing.Font("Segoe UI", 9.75!)
+        Me.snackbar.SuccessOptions.ForeColor = System.Drawing.Color.Black
+        Me.snackbar.SuccessOptions.Icon = CType(resources.GetObject("resource.Icon2"), System.Drawing.Image)
+        Me.snackbar.SuccessOptions.IconLeftMargin = 12
+        Me.snackbar.ViewsMargin = 7
+        Me.snackbar.WarningOptions.ActionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.snackbar.WarningOptions.ActionBorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.snackbar.WarningOptions.ActionBorderRadius = 1
+        Me.snackbar.WarningOptions.ActionFont = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.snackbar.WarningOptions.ActionForeColor = System.Drawing.Color.Black
+        Me.snackbar.WarningOptions.BackColor = System.Drawing.Color.White
+        Me.snackbar.WarningOptions.BorderColor = System.Drawing.Color.White
+        Me.snackbar.WarningOptions.CloseIconColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(143, Byte), Integer))
+        Me.snackbar.WarningOptions.Font = New System.Drawing.Font("Segoe UI", 9.75!)
+        Me.snackbar.WarningOptions.ForeColor = System.Drawing.Color.Black
+        Me.snackbar.WarningOptions.Icon = CType(resources.GetObject("resource.Icon3"), System.Drawing.Image)
+        Me.snackbar.WarningOptions.IconLeftMargin = 12
+        Me.snackbar.ZoomCloseIcon = True
+        '
         'frmCashierSettings
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 14.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(249, Byte), Integer), CType(CType(209, Byte), Integer), CType(CType(200, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(954, 646)
@@ -554,7 +618,7 @@ Partial Class frmCashierSettings
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.pnlGroupA.ResumeLayout(False)
         Me.pnlQRInformation.ResumeLayout(False)
-        CType(Me.picQRCode, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pcbQRCode, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlAccountInformation.ResumeLayout(False)
         Me.ResumeLayout(False)
 
@@ -562,11 +626,9 @@ Partial Class frmCashierSettings
 
     Friend WithEvents pnlGroupA As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents lblQRCodeWarning As Bunifu.UI.WinForms.BunifuLabel
-    Friend WithEvents picQRCode As Guna.UI2.WinForms.Guna2PictureBox
     Friend WithEvents txtPassword As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents btnDownload As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents txtUsername As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents txtType As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents txtNumber As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents txtName As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents lblPassword As Bunifu.UI.WinForms.BunifuLabel
@@ -581,4 +643,7 @@ Partial Class frmCashierSettings
     Friend WithEvents btnCancel As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents btnEditAccount As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents pnlQRInformation As Bunifu.UI.WinForms.BunifuPanel
+    Friend WithEvents txtType As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents snackbar As Bunifu.UI.WinForms.BunifuSnackbar
+    Friend WithEvents pcbQRCode As PictureBox
 End Class

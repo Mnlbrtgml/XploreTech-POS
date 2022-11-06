@@ -1,5 +1,6 @@
 ﻿Imports Bunifu.UI.WinForms
 Imports Guna.UI2.WinForms
+Imports QRCoder
 
 Public Class frmCashierSettings
     Private Sub frmCashierSettings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -16,44 +17,81 @@ Public Class frmCashierSettings
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         For Each Textbox In pnlAccountInformation.Controls
-            If TypeOf Textbox Is Guna2TextBox Then
+            If TypeOf (Textbox) Is Guna2TextBox Then
                 If String.IsNullOrWhiteSpace(Textbox.Text) Then
-                    If String.IsNullOrWhiteSpace(txtPassword.Text) AndAlso String.IsNullOrWhiteSpace(txtRetypePassword.Text) Then
-                        txtPassword.BorderColor = ErrorColor
-                        txtPassword.FocusedState.BorderColor = ErrorColor
-                        txtRetypePassword.BorderColor = ErrorColor
-                        txtRetypePassword.FocusedState.BorderColor = ErrorColor
-                        txtPassword.Focus()
-                    End If
-
                     Textbox.BorderColor = ErrorColor
                     Textbox.FocusedState.BorderColor = ErrorColor
                     Textbox.Focus()
                     Textbox.Tag = "Has no text"
                 Else
-                    If txtPassword.Text <> txtRetypePassword.Text Then
-                        txtPassword.BorderColor = ErrorColor
-                        txtPassword.FocusedState.BorderColor = ErrorColor
-                        txtRetypePassword.BorderColor = ErrorColor
-                        txtRetypePassword.FocusedState.BorderColor = ErrorColor
-                        txtRetypePassword.Focus()
-                        txtRetypePassword.Tag = "Has no text"
-                        txtRetypePassword.Tag = "Has no text"
-                    Else
-                        txtPassword.BorderColor = DefaultColor
-                        txtRetypePassword.BorderColor = DefaultColor
-                        txtPassword.Tag = "Has text"
-                        txtRetypePassword.Tag = "Has text"
-                    End If
-
                     Textbox.BorderColor = DefaultColor
                     Textbox.Tag = "Has text"
                 End If
             End If
         Next
 
-        If txtName.Tag = "Has text" AndAlso txtUsername.Tag = "Has text" AndAlso txtPassword.Tag = "Has text" AndAlso txtRetypePassword.Tag = "Has text" Then
+        For Each Textbox In pnlAccountInformation.Controls
+            If TypeOf (Textbox) Is Guna2TextBox Then
+                If Textbox.Tag = "Has no text" Then
+                    displaySnackbar(Me, "Complete all the fields!", BunifuSnackbar.MessageTypes.Error, 3000,
+                                "", BunifuSnackbar.Positions.BottomRight, BunifuSnackbar.Hosts.FormOwner, snackbar)
+                    Exit Sub
+                End If
+            End If
+        Next
+
+        If Not ValidUser(txtUsername.Text) Then
+            txtUsername.BorderColor = ErrorColor
+            txtUsername.FocusedState.BorderColor = ErrorColor
+            txtUsername.Focus()
+            txtUsername.Tag = "Has no text"
+            displaySnackbar(Me, "Username must be atleast 8 character!", BunifuSnackbar.MessageTypes.Error, 3000,
+                                "", BunifuSnackbar.Positions.BottomRight, BunifuSnackbar.Hosts.FormOwner, snackbar)
+            Exit Sub
+        End If
+
+        If txtPassword.Text <> txtRetypePassword.Text Then
+            txtPassword.BorderColor = ErrorColor
+            txtPassword.FocusedState.BorderColor = ErrorColor
+            txtRetypePassword.BorderColor = ErrorColor
+            txtRetypePassword.FocusedState.BorderColor = ErrorColor
+            txtRetypePassword.Focus()
+            txtRetypePassword.Tag = "Has no text"
+            txtRetypePassword.Tag = "Has no text"
+            displaySnackbar(Me, "Password did not match!", BunifuSnackbar.MessageTypes.Error, 3000,
+                                "", BunifuSnackbar.Positions.BottomRight, BunifuSnackbar.Hosts.FormOwner, snackbar)
+            Exit Sub
+        Else
+            txtPassword.BorderColor = DefaultColor
+            txtRetypePassword.BorderColor = DefaultColor
+            txtPassword.Tag = "Has text"
+            txtRetypePassword.Tag = "Has text"
+        End If
+
+        If Not ValidPassword(txtPassword.Text) Then
+            txtPassword.BorderColor = ErrorColor
+            txtPassword.FocusedState.BorderColor = ErrorColor
+            txtRetypePassword.BorderColor = ErrorColor
+            txtRetypePassword.FocusedState.BorderColor = ErrorColor
+            txtRetypePassword.Focus()
+            txtRetypePassword.Tag = "Has no text"
+            txtRetypePassword.Tag = "Has no text"
+            displaySnackbar(Me, "Password is weak!", BunifuSnackbar.MessageTypes.Error, 3000,
+                                "", BunifuSnackbar.Positions.BottomRight, BunifuSnackbar.Hosts.FormOwner, snackbar)
+            Exit Sub
+        End If
+
+        If EditUser(txtName.Text, txtType.Text, txtUsername.Text, EncryptPassword(txtPassword.Text), txtNumber.Text) Then
             editAccountInformation(False)
+            LoggedUser.FullName = txtName.Text
+            LoggedUser.UserType = txtType.Text
+            LoggedUser.Username = txtUsername.Text
+            LoggedUser.Password = txtPassword.Text
+            displaySnackbar(Me, "Account Updated Successfully", BunifuSnackbar.MessageTypes.Success, DefaultDuration,
+                                "", BunifuSnackbar.Positions.BottomRight, BunifuSnackbar.Hosts.FormOwner, snackbar)
+        Else
+            displaySnackbar(Me, "There's an error updating your account! Contact administrator", BunifuSnackbar.MessageTypes.Error, 3000,
+                                "", BunifuSnackbar.Positions.BottomRight, BunifuSnackbar.Hosts.FormOwner, snackbar)
         End If
     End Sub
 
@@ -83,7 +121,13 @@ Public Class frmCashierSettings
             btnSave.Show()
             pnlAccountInformation.Enabled = True
             txtName.Focus()
+            txtPassword.Clear()
         Else
+            Dim qrText As String = EncryptPassword(LoggedUser.Username) & LoggedUser.Password
+            Dim gen As New QRCodeGenerator
+            Dim data = gen.CreateQrCode(qrText, QRCodeGenerator.ECCLevel.Q)
+            Dim code As New QRCode(data)
+            pcbQRCode.Image = code.GetGraphic(6)
             btnEditAccount.Show()
             pnlQRInformation.Show()
             lblNumber.Show()
@@ -107,6 +151,75 @@ Public Class frmCashierSettings
             btnCancel.Hide()
             btnSave.Hide()
             pnlAccountInformation.Enabled = False
+            txtName.Text = LoggedUser.FullName
+            txtNumber.Text = LoggedUser.ID
+            txtPassword.Text = LoggedUser.Password
+            txtUsername.Text = LoggedUser.Username
+            txtType.Text = LoggedUser.UserType
+            txtRetypePassword.Clear()
         End If
     End Sub
+
+    Private Sub btnDownload_Click(sender As Object, e As EventArgs) Handles btnDownload.Click
+        Dim savePic As New SaveFileDialog
+        Dim Path As String = "D:\QRCodes\"
+        Dim Dir As String = System.IO.Path.GetDirectoryName(Path)
+
+        Dim title As String = "Xplore-Tech QRCode"
+        Dim btn = MessageBoxButtons.YesNo
+        Dim ico = MessageBoxIcon.Information
+
+        Try
+            If Not System.IO.Directory.Exists(Dir) Then
+                System.IO.Directory.CreateDirectory(Dir)
+            End If
+
+            With savePic
+                .Title = "Save Image As"
+                .Filter = "Jpg, Jpeg Images|*.jpg;*.jpeg|PNG Image|*.png|BMP Image|*.bmp"
+                .AddExtension = True
+                .FileName = "XploreTech-POS.jpg"
+                .ValidateNames = True
+                .OverwritePrompt = True
+                .InitialDirectory = Dir
+                .RestoreDirectory = True
+
+                If .ShowDialog = DialogResult.OK Then
+                    If .FilterIndex = 1 Then
+                        pcbQRCode.Image.Save(savePic.FileName, Imaging.ImageFormat.Jpeg)
+                    ElseIf .FilterIndex = 2 Then
+                        pcbQRCode.Image.Save(savePic.FileName, Imaging.ImageFormat.Png)
+                    ElseIf .FilterIndex = 3 Then
+                        pcbQRCode.Image.Save(savePic.FileName, Imaging.ImageFormat.Bmp)
+                    End If
+                Else
+                    Return
+                End If
+            End With
+
+            Dim r As DialogResult
+            ActLog("Download QRCode Image")
+            Dim msg As String = "Image saved successfully." & vbNewLine
+            msg &= "Open it now?"
+
+            r = MessageBox.Show(msg, title, btn, ico)
+
+            If r = System.Windows.Forms.DialogResult.Yes Then
+                Dim startinfo As New ProcessStartInfo("mspaint.exe")
+                startinfo.WindowStyle = ProcessWindowStyle.Maximized
+                startinfo.Arguments = Chr(34) & Dir & Chr(34) & "\" & System.IO.Path.GetFileName(savePic.FileName).ToString
+                Process.Start(startinfo)
+            Else
+                Return
+            End If
+
+        Catch ex As Exception
+
+            MessageBox.Show("Error Saving Image: " & ex.Message.ToString)
+            Me.Close()
+        Finally
+            savePic.Dispose()
+        End Try
+    End Sub
+
 End Class

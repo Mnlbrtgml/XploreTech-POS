@@ -3,7 +3,7 @@ Public Class frmGenerateQRCode
     Private Sub frmGenerateQRCode_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ctrlShadowForm.SetShadowForm(Me)
 
-        Dim qrText As String = EncryptPassword(frmOtherSettings.dgvTable.CurrentRow.Cells("Username").Value) & GetTableColumnString(frmOtherSettings.dgvTable.CurrentRow.Cells("Username").Value, "user", "Username", "Password")
+        Dim qrText As String = EncryptPassword(LoggedUser.Username) & LoggedUser.Password
         Dim gen As New QRCodeGenerator
         Dim data = gen.CreateQrCode(qrText, QRCodeGenerator.ECCLevel.Q)
         Dim code As New QRCode(data)

@@ -188,6 +188,7 @@ Partial Class frmPointOfSale
         DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgvItemList.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.dgvItemList.RowHeadersVisible = False
+        Me.dgvItemList.RowHeadersWidth = 51
         Me.dgvItemList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle5.BackColor = System.Drawing.Color.White
@@ -263,6 +264,7 @@ Partial Class frmPointOfSale
         Me.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(219, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(137, Byte), Integer))
         Me.txtSearch.HoverState.Parent = Me.txtSearch
         Me.txtSearch.Location = New System.Drawing.Point(229, 26)
+        Me.txtSearch.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtSearch.Name = "txtSearch"
         Me.txtSearch.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtSearch.PlaceholderText = "Search"
@@ -320,6 +322,7 @@ Partial Class frmPointOfSale
         Me.txtItemPrice.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(219, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(137, Byte), Integer))
         Me.txtItemPrice.HoverState.Parent = Me.txtItemPrice
         Me.txtItemPrice.Location = New System.Drawing.Point(277, 474)
+        Me.txtItemPrice.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtItemPrice.Name = "txtItemPrice"
         Me.txtItemPrice.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtItemPrice.PlaceholderText = ""
@@ -444,6 +447,7 @@ Partial Class frmPointOfSale
         DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgvSelectedItemList.RowHeadersDefaultCellStyle = DataGridViewCellStyle9
         Me.dgvSelectedItemList.RowHeadersVisible = False
+        Me.dgvSelectedItemList.RowHeadersWidth = 51
         Me.dgvSelectedItemList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle10.BackColor = System.Drawing.Color.White
@@ -466,36 +470,42 @@ Partial Class frmPointOfSale
         'Column1
         '
         Me.Column1.HeaderText = "Product"
+        Me.Column1.MinimumWidth = 6
         Me.Column1.Name = "Column1"
         Me.Column1.ReadOnly = True
         '
         'Column2
         '
         Me.Column2.HeaderText = "Add-ons"
+        Me.Column2.MinimumWidth = 6
         Me.Column2.Name = "Column2"
         Me.Column2.ReadOnly = True
         '
         'Column3
         '
         Me.Column3.HeaderText = "Quantity"
+        Me.Column3.MinimumWidth = 6
         Me.Column3.Name = "Column3"
         Me.Column3.ReadOnly = True
         '
         'Column4
         '
         Me.Column4.HeaderText = "Size"
+        Me.Column4.MinimumWidth = 6
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
         '
         'Column5
         '
         Me.Column5.HeaderText = "Sugar"
+        Me.Column5.MinimumWidth = 6
         Me.Column5.Name = "Column5"
         Me.Column5.ReadOnly = True
         '
         'Column6
         '
         Me.Column6.HeaderText = "Price"
+        Me.Column6.MinimumWidth = 6
         Me.Column6.Name = "Column6"
         Me.Column6.ReadOnly = True
         '
@@ -764,6 +774,7 @@ Partial Class frmPointOfSale
         Me.txtQuantity.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(219, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(137, Byte), Integer))
         Me.txtQuantity.HoverState.Parent = Me.txtQuantity
         Me.txtQuantity.Location = New System.Drawing.Point(229, 179)
+        Me.txtQuantity.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtQuantity.Name = "txtQuantity"
         Me.txtQuantity.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtQuantity.PlaceholderText = ""
@@ -798,6 +809,7 @@ Partial Class frmPointOfSale
         Me.txtToppings.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(219, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(137, Byte), Integer))
         Me.txtToppings.HoverState.Parent = Me.txtToppings
         Me.txtToppings.Location = New System.Drawing.Point(229, 114)
+        Me.txtToppings.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtToppings.Name = "txtToppings"
         Me.txtToppings.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtToppings.PlaceholderText = ""
@@ -833,9 +845,11 @@ Partial Class frmPointOfSale
         Me.txtItemName.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(219, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(137, Byte), Integer))
         Me.txtItemName.HoverState.Parent = Me.txtItemName
         Me.txtItemName.Location = New System.Drawing.Point(25, 49)
+        Me.txtItemName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtItemName.Name = "txtItemName"
         Me.txtItemName.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtItemName.PlaceholderText = ""
+        Me.txtItemName.ReadOnly = True
         Me.txtItemName.SelectedText = ""
         Me.txtItemName.ShadowDecoration.Enabled = True
         Me.txtItemName.ShadowDecoration.Parent = Me.txtItemName
@@ -998,7 +1012,7 @@ Partial Class frmPointOfSale
         '
         'frmPointOfSale
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(249, Byte), Integer), CType(CType(209, Byte), Integer), CType(CType(200, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(954, 646)
