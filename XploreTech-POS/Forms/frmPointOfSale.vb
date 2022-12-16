@@ -32,7 +32,7 @@ Public Class frmPointOfSale
         Dim newRow As String()
 
         If cmbxSelectProduct.Text = "Milktea Products" Then
-            orderPrice = GetTableColumnNumber(txtItemName.Text, "milktea", "Name", "Price") * IIf(txtQuantity.Text > 0, txtQuantity.Text, 1)
+            orderPrice = (cmbxCupSize.SelectedValue + GetTableColumnNumber(txtItemName.Text, "milktea", "Name", "Price") * IIf(txtQuantity.Text > 0, txtQuantity.Text, 1))
             orderConcat = txtItemName.Text & IIf(tooltip.GetToolTip(txtToppings) = "", "None", tooltip.GetToolTip(txtToppings)) & cmbxCupSize.Text & cmbxSugarLevel.Text
 
             'Compute toppings price

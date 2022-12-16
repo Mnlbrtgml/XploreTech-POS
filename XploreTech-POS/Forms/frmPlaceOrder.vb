@@ -75,7 +75,8 @@ Public Class frmPlaceOrder
 
         If mbxResult = DialogResult.Yes Then
             If cmbxCustomerType.SelectedIndex = 0 And txtCustomerName.Text <> "" Or txtCustomerNumber.Text <> "" Or txtCustomerAddress.Text <> "" Then
-                InsertUnregCustomer(txtCustomerName.Text, txtCustomerNumber.Text, txtCustomerAddress.Text)
+
+                'InsertUnregCustomer(txtCustomerName.Text, txtCustomerNumber.Text, txtCustomerAddress.Text)
             End If
 
             Do While GetTableColumnNumber(receiptNo, "transaction", "Receipt_ID", "Transaction_ID") > 0 'generate receipt number
@@ -144,7 +145,7 @@ Public Class frmPlaceOrder
             For i = 0 To productsOrder.product.Count - 1
                 Dim serviceTypeID As String = GetTableColumnNumber(cmbxServiceType.Text, "service_type", "Name", "Service_Type_ID")
                 Dim customerID As String = IIf(cmbxCustomerType.Text = "Regular", Nothing, GetTableColumnNumber(txtCustomerName.Text, "customer", "Name", "Customer_ID"))
-                Dim unregCustomerID As String = IIf(cmbxCustomerType.Text = "Regular", GetTableColumnString(txtCustomerName.Text, "unregistered_customer", "Name", "Unregistered_Customer_ID"), 1)
+                'Dim unregCustomerID As String = IIf(cmbxCustomerType.Text = "Regular", GetTableColumnString(txtCustomerName.Text, "unregistered_customer", "Name", "Unregistered_Customer_ID"), 1)
                 Dim customerTypeID As String = IIf(customerID = Nothing, Nothing, GetTableColumnNumber(customerID, "customer", "Customer_ID", "Customer_Type_ID"))
                 Dim milkteaID As String = IIf(MilkteaRowCount(frmPointOfSale.dgvSelectedItemList.Rows(i).Cells(0).Value) <> 0, productsOrder.product(i).ID, Nothing)
                 Dim AdditionalProductID As String = IIf(MilkteaRowCount(frmPointOfSale.dgvSelectedItemList.Rows(i).Cells(0).Value) <> 0, Nothing, productsOrder.product(i).ID)
@@ -156,9 +157,9 @@ Public Class frmPlaceOrder
                 End If
                 '
                 UpdateCupStock(productsOrder.product(i).Quantity, productsOrder.product(i).SizeID)
-                MsgBox(unregCustomerID)
+
                 InsertOrder(receiptNo, cmbxPaymentType.SelectedValue, serviceTypeID,
-                            LoggedUser.ID, customerID, unregCustomerID, milkteaID,
+                            LoggedUser.ID, customerID, milkteaID,
                             productsOrder.product(i).SizeID, productsOrder.product(i).Add_ons,
                             AdditionalProductID, productsOrder.product(i).Quantity,
                             productsOrder.product(i).Price, lblPayment.Text, discount)
@@ -247,7 +248,7 @@ Public Class frmPlaceOrder
             payment += IIf(txtPayment.Text = "", 0, txtPayment.Text)
             serviceFee += txtServiceFee.Text
             discount += ((cmbxCustomerType.SelectedValue + storeDiscount) * subTotal)
-            totalPrice += (subTotal - discount)
+            totalPrice += (subTotal - discount) + serviceFee
             change += (payment - totalPrice)
             lblPayment.Text = payment
             lblSubTotal.Text = subTotal

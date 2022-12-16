@@ -27,13 +27,16 @@ Partial Class frmReports
         Me.cmbxReport = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.btnFilter = New Guna.UI2.WinForms.Guna2Button()
         Me.pnlReports = New Guna.UI2.WinForms.Guna2Panel()
+        Me.pnlReportShadow = New Guna.UI2.WinForms.Guna2Panel()
         Me.report = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.cmbxSubReport = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.btnReset = New Guna.UI2.WinForms.Guna2Button()
         Me.elipse = New Bunifu.Framework.UI.BunifuElipse(Me.components)
-        Me.pnlReportShadow = New Guna.UI2.WinForms.Guna2Panel()
+        Me.MilkteaTableAdapter1 = New XploreTech_POS.dbpointofsaleDataSetTableAdapters.milkteaTableAdapter()
+        Me.DbpointofsaleDataSet1 = New XploreTech_POS.dbpointofsaleDataSet()
         Me.pnlReports.SuspendLayout()
         Me.pnlReportShadow.SuspendLayout()
+        CType(Me.DbpointofsaleDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmbxReport
@@ -107,6 +110,21 @@ Partial Class frmReports
         Me.pnlReports.Size = New System.Drawing.Size(929, 596)
         Me.pnlReports.TabIndex = 4
         '
+        'pnlReportShadow
+        '
+        Me.pnlReportShadow.BackColor = System.Drawing.Color.Transparent
+        Me.pnlReportShadow.BorderColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
+        Me.pnlReportShadow.BorderRadius = 6
+        Me.pnlReportShadow.Controls.Add(Me.report)
+        Me.pnlReportShadow.FillColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
+        Me.pnlReportShadow.Location = New System.Drawing.Point(25, 86)
+        Me.pnlReportShadow.Name = "pnlReportShadow"
+        Me.pnlReportShadow.ShadowDecoration.Enabled = True
+        Me.pnlReportShadow.ShadowDecoration.Parent = Me.pnlReportShadow
+        Me.pnlReportShadow.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 5, 5)
+        Me.pnlReportShadow.Size = New System.Drawing.Size(879, 485)
+        Me.pnlReportShadow.TabIndex = 3
+        '
         'report
         '
         Me.report.BackColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
@@ -176,24 +194,18 @@ Partial Class frmReports
         Me.elipse.ElipseRadius = 6
         Me.elipse.TargetControl = Me.report
         '
-        'pnlReportShadow
+        'MilkteaTableAdapter1
         '
-        Me.pnlReportShadow.BackColor = System.Drawing.Color.Transparent
-        Me.pnlReportShadow.BorderColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
-        Me.pnlReportShadow.BorderRadius = 6
-        Me.pnlReportShadow.Controls.Add(Me.report)
-        Me.pnlReportShadow.FillColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
-        Me.pnlReportShadow.Location = New System.Drawing.Point(25, 86)
-        Me.pnlReportShadow.Name = "pnlReportShadow"
-        Me.pnlReportShadow.ShadowDecoration.Enabled = True
-        Me.pnlReportShadow.ShadowDecoration.Parent = Me.pnlReportShadow
-        Me.pnlReportShadow.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 5, 5)
-        Me.pnlReportShadow.Size = New System.Drawing.Size(879, 485)
-        Me.pnlReportShadow.TabIndex = 3
+        Me.MilkteaTableAdapter1.ClearBeforeFill = True
+        '
+        'DbpointofsaleDataSet1
+        '
+        Me.DbpointofsaleDataSet1.DataSetName = "dbpointofsaleDataSet"
+        Me.DbpointofsaleDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'frmReports
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 14.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(249, Byte), Integer), CType(CType(209, Byte), Integer), CType(CType(200, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(954, 646)
@@ -206,6 +218,7 @@ Partial Class frmReports
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.pnlReports.ResumeLayout(False)
         Me.pnlReportShadow.ResumeLayout(False)
+        CType(Me.DbpointofsaleDataSet1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -218,4 +231,6 @@ Partial Class frmReports
     Friend WithEvents cmbxSubReport As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents pnlReportShadow As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents elipse As Bunifu.Framework.UI.BunifuElipse
+    Friend WithEvents MilkteaTableAdapter1 As dbpointofsaleDataSetTableAdapters.milkteaTableAdapter
+    Friend WithEvents DbpointofsaleDataSet1 As dbpointofsaleDataSet
 End Class

@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports Microsoft.Reporting.WinForms
+Imports MySql.Data.MySqlClient
 
 Module DatabaseOperation
     'Populate Checkbox******************************************************************************************************************************************************************************
@@ -176,13 +177,13 @@ Module DatabaseOperation
 
         Using con As MySqlConnection = Conn()
 
-            If ReportFileName = "Receipt" Then
-
-                stmt = "SELECT re.Receipt_ID AS `Receipt_Number`, 
+            Select Case ReportFileName
+                Case "Receipt"
+                    stmt = "SELECT re.Receipt_ID AS `Receipt_Number`, 
                         u.Full_Name AS `Processed_By`, 
                         re.Date_Processed, 
-                        IF(cus.Name is null, ucus.Name, cus.Name) AS `Customer_Name`,
-                        IF(cus.Address is null, ucus.Address, cus.Address) AS `Customer_Add`,
+                        cus.Name AS `Customer_Name`,
+                        cus.Address AS `Customer_Add`,
                         ptype.Name AS `Payment_Method`,
                         stype.Name AS `Service_Method`,
                         group_concat(IF(mi.Name is null, ap.Name, CONCAT(mi.Name,' | ',re.Add_Ons)) separator '\n') AS `Item`,
@@ -199,30 +200,82 @@ Module DatabaseOperation
 				                          INNER JOIN service_type stype on re.Service_Type_ID = stype.Service_Type_ID
 				                          INNER JOIN user u on re.User_ID = u.User_ID
 				                          LEFT JOIN customer cus on re.Customer_ID = cus.Customer_ID
-                                          LEFT JOIN unregistered_customer ucus on re.Unregistered_Customer_ID = ucus.Unregistered_Customer_ID
 				                          LEFT JOIN milktea mi on re.Milktea_ID = mi.Milktea_ID
 				                          LEFT JOIN cup_size cup on re.Cup_Size_ID = cup.Cup_Size_ID
 				                          LEFT JOIN additional_products ap on re.Additional_Products_ID = ap.Additional_Products_ID
                         WHERE re.Receipt_ID = @ReceiptNumber"
-            End If
+
+                    Using cmd = Command(stmt, con)
+                        cmd.Parameters.AddWithValue("@ReceiptNumber", ReceiptNumber)
+                        con.Open()
+                        Dim adapter As New MySqlDataAdapter(cmd)
+
+                        table = ds.Tables("Report" & ReportFileName)
+                        table.Clear()
+                        adapter.Fill(table)
+                        With frmTestingan.report.LocalReport
+                            .ReportPath = ReportFileName & ".rdlc"
+                            .DataSources.Clear()
+                            .DataSources.Add(New Microsoft.Reporting.WinForms.ReportDataSource("reportDataSet", table))
+                        End With
+                    End Using
+                    frmTestingan.ShowDialog()
+                    frmTestingan.report.RefreshReport()
+                    Exit Sub
+                Case "MilkteaProducts"
+                    stmt = "SELECT `Name`, `Price`, `Status`, `Updated` FROM `milktea`"
+                Case "OtherProducts"
+                    stmt = "SELECT `Name`, `Price`, `Status`, `Updated` FROM `additional_products`"
+                Case "Toppings"
+                    stmt = "SELECT `Name`, `Price`, `Status`, `Updated` FROM `add_ons`"
+                Case "UserAccounts"
+                    stmt = "SELECT `Full_Name` AS `Name`, `User_Type` AS `Type`, `Username`, `Password` FROM `user`"
+                Case "Transaction"
+                    stmt = "SELECT tr.Transaction_ID AS `ID`, 
+                    re.Receipt_ID AS `Receipt_ID`, 
+                    pt.Name AS `Payment_Type`, 
+                    ser.Name AS `Service_Type`,
+                    u.Full_Name AS `Transac_By`, 
+                    cus.Name AS `Customer`, 
+                    IF(mi.Name is null, ap.Name, CONCAT(mi.Name, ' | ', re.Add_ons)) AS `Product`,
+                    IF(mi.Name is null,'Other Product', 'Milktea') AS `Category`,
+                    re.Price AS `Product_Price`,
+                    re.Payment AS `Payment`,
+                    re.Discount,
+                    re.Date_Processed AS `Date_Processed`
+                    FROM     transaction tr 
+                                      INNER JOIN receipt re ON tr.Receipt_ID = re.ID 
+                                      INNER JOIN payment_type pt on tr.Payment_Type_ID = pt.Payment_Type_ID
+                                      INNER JOIN service_type ser on tr.Service_Type_ID = ser.Service_Type_ID
+                                      INNER JOIN user u on tr.User_ID = u.User_ID
+                                      LEFT JOIN customer cus on tr.Customer_ID = cus.Customer_ID
+                                      LEFT JOIN customertype custype on tr.Customer_Type_ID = custype.Customer_Type_ID
+                                      LEFT JOIN milktea mi on tr.Milktea_ID = mi.Milktea_ID
+                                      LEFT JOIN cup_size cup on tr.Cup_Size_ID = cup.Cup_Size_ID
+                                      LEFT JOIN additional_products ap on tr.Additional_Products_ID = ap.Additional_Products_ID
+                                      LEFT JOIN sugar_level sl on tr.Sugar_Level_ID = sl.Sugar_Level_ID
+                                      LEFT JOIN promo pr on tr.Promo_ID = pr.Promo_ID"
+                Case "ActivityLog"
+                    stmt = "SELECT `User_ID`, `Name`, `Activity`, `Created_At` FROM `activitylog`"
+            End Select
 
             Using cmd = Command(stmt, con)
-                cmd.Parameters.AddWithValue("@ReceiptNumber", ReceiptNumber)
+                'cmd.Parameters.AddWithValue("@ReceiptNumber", ReceiptNumber)
                 con.Open()
                 Dim adapter As New MySqlDataAdapter(cmd)
 
                 table = ds.Tables("Report" & ReportFileName)
                 table.Clear()
                 adapter.Fill(table)
-                With frmTestingan.report.LocalReport
+                With frmReports.report.LocalReport
                     .ReportPath = ReportFileName & ".rdlc"
                     .DataSources.Clear()
                     .DataSources.Add(New Microsoft.Reporting.WinForms.ReportDataSource("reportDataSet", table))
                 End With
             End Using
-
-            frmTestingan.ShowDialog()
-            frmTestingan.report.RefreshReport()
+            frmReports.report.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout)
+            frmReports.report.ZoomMode = ZoomMode.PageWidth
+            frmReports.report.RefreshReport()
         End Using
     End Sub
 
@@ -546,12 +599,11 @@ Module DatabaseOperation
         End Using
         Return result
     End Function
-    Public Sub InsertOrder(receiptID As String, paymentTypeID As String, serviceTypeID As String, userID As String, customerID As String, unregCustomerID As String, milkteaID As String,
+    Public Sub InsertOrder(receiptID As String, paymentTypeID As String, serviceTypeID As String, userID As String, customerID As String, milkteaID As String,
                            cupSizeID As String, addOns As String, additionalProductsID As String, quantity As String, price As String, payment As String, discount As String)
-        MsgBox("Receipt:" & receiptID & " paymenttype:" & paymentTypeID & " serviceType:" & serviceTypeID & " userid:" & userID & " customerid:" & customerID & " unregid:" & unregCustomerID &
-               " milktea:" & milkteaID & " cupsize:" & cupSizeID & " addons:" & addOns & " additional:" & additionalProductsID & " qty:" & quantity & " price:" & price & " payment:" & payment & " discount:" & discount)
+
         Using con As MySqlConnection = Conn()
-            stmt = "INSERT INTO `receipt` VALUES(Default, @receiptID, @paymentTypeID, @serviceTypeID, @userID, @customerID, @unregCustomerID, @milkteaID, @cupSizeID, " _
+            stmt = "INSERT INTO `receipt` VALUES(Default, @receiptID, @paymentTypeID, @serviceTypeID, @userID, @customerID, @milkteaID, @cupSizeID, " _
                    & "@addOns, @additionalProductsID, @quantity, @price, @payment, @discount, Default)"
             cmd = Command(stmt, con)
             With cmd.Parameters
@@ -561,7 +613,6 @@ Module DatabaseOperation
                 .AddWithValue("serviceTypeID", serviceTypeID)
                 .AddWithValue("userID", userID)
                 .AddWithValue("customerID", customerID)
-                .AddWithValue("unregCustomerID", unregCustomerID)
                 .AddWithValue("milkteaID", milkteaID)
                 .AddWithValue("cupSizeID", cupSizeID)
                 .AddWithValue("addOns", addOns)
@@ -1149,29 +1200,29 @@ Module DatabaseOperation
 
             While rd.Read()
                 Dim item As New Item
-                item.name = rd("milktea").ToString
-                item.quantity = rd("Quantity")
+                item.Name = rd("milktea").ToString
+                item.Quantity = rd("Quantity")
                 If topSellingProdducts.Count > 1 Then
                     For i = 0 To topSellingProdducts.Count - 1
-                        If topSellingProdducts(i).name = item.name Then
-                            topSellingProdducts(i).quantity += item.quantity
+                        If topSellingProdducts(i).Name = item.Name Then
+                            topSellingProdducts(i).Quantity += item.Quantity
                             Exit For
                         ElseIf i = topSellingProdducts.Count - 1 Then
                             topSellingProdducts.Add(item)
                         End If
                     Next
                 ElseIf topSellingProdducts.Count > 0 Then
-                    If topSellingProdducts(0).name <> item.name Then
+                    If topSellingProdducts(0).Name <> item.Name Then
                         topSellingProdducts.Add(item)
                     Else
-                        topSellingProdducts(0).quantity += item.quantity
+                        topSellingProdducts(0).Quantity += item.Quantity
                     End If
                 Else
                     topSellingProdducts.Add(item)
                 End If
             End While
 
-            topSellingProdducts.Sort(Function(x, y) y.quantity.CompareTo(x.quantity))
+            topSellingProdducts.Sort(Function(x, y) y.Quantity.CompareTo(x.Quantity))
             If topSellingProdducts.Count > 5 Then
                 topSellingProdducts.RemoveRange(5, topSellingProdducts.Count - 5)
             End If

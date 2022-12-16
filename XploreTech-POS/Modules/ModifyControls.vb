@@ -50,6 +50,18 @@ Module ModifyControls
         dgvTable.Columns.Add(delete)
     End Sub
 
+    Public Sub LoadEditButton(dgvTable As Bunifu.UI.WinForms.BunifuDataGridView)
+        Dim edit As DataGridViewColumn = New DataGridViewButtonColumn With {
+            .DataPropertyName = "clmnBtnEdit",
+            .HeaderText = "Edit",
+            .Name = "clmnEdit",
+            .UseColumnTextForButtonValue = True,
+            .Width = 50,
+            .Text = "Edit"
+        }
+        dgvTable.Columns.Add(edit)
+    End Sub
+
     Public DefaultDuration As Short = 1300
     Public DefaultFontStyle As New Font("Roboto", 9)
     Public DefaultForeColor As Color = Color.FromArgb(17, 17, 17)

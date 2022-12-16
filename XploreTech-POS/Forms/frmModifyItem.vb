@@ -160,7 +160,25 @@ Public Class frmModifyItem
             End If
 
         ElseIf pnlEditing.Tag = "Service type" Then
+            ChangeFormProperty(404, 309, 354, 259)
+            Textbox02.Location = New Point(25, 114)
+            btnCancel.Location = New Point(25, 198)
+            btnSave.Location = New Point(181, 198)
+            CurrentStatus = "this service type"
+            Label01.Text = "Service name"
+            Label02.Text = "Service fee"
+            Label01.Show()
+            Label02.Show()
+            Textbox01.Show()
+            Textbox01.Enabled = False
+            Textbox02.Show()
 
+            If Me.Tag = "Edit" Then
+                Textbox01.Text = drOthers.Cells("Name").Value.ToString
+                Textbox02.Text = drOthers.Cells("Fee").Value.ToString
+            Else
+
+            End If
         End If
 
         If Combobox.Items.Count > 0 And Me.Tag = "Add" Then
@@ -261,7 +279,7 @@ Public Class frmModifyItem
                     ChangePass(Textbox03.Text)
                     btnSave.Tag = Nothing
                 Else
-                    MsgBox("Password must have minimum length of 8 characters with atleast one numberic, lower, upper character.",
+                    MsgBox("Password must have minimum length of 8 characters with atleast one numeric, lower, upper character.",
                                 vbOKOnly, "Error Saving Password")
                 End If
             Else
@@ -394,7 +412,9 @@ Public Class frmModifyItem
                         LoadPromoTable(frmOtherSettings.dgvTable)
                         ActLog("Edit Promo: " & Textbox01.Text)
                     ElseIf pnlEditing.Tag = "Service type" Then
-
+                        EditServiceType(Trim(Textbox01.Text), Trim(Textbox02.Text), GetTableColumnNumber(drOthers.Cells("Name").Value, "service_type", "Name", "Service_Type_ID"))
+                        LoadServiceTypeTable(frmOtherSettings.dgvTable)
+                        ActLog("Edit Service Type: " & Textbox01.Text)
                     End If
                 End If
 
@@ -476,8 +496,8 @@ Public Class frmModifyItem
     End Function
 
     Private Sub Textbox02_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Textbox02.KeyPress
-        If pnlEditing.Tag = "Product" Or pnlEditing.Tag = "Customer type" Then
-            If Not Char.IsNumber(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) AndAlso Not e.KeyChar = "." AndAlso Not e.KeyChar = "-" Then
+        If pnlEditing.Tag = "Product" Or pnlEditing.Tag = "Customer type" Or pnlEditing.Tag = "Service type" Then
+            If Not Char.IsNumber(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) AndAlso Not e.KeyChar = "." Then
                 e.Handled = True
             End If
         ElseIf pnlEditing.Tag = "Customer list" Then
@@ -490,7 +510,7 @@ Public Class frmModifyItem
 
     Private Sub Textbox03_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Textbox03.KeyPress
         If pnlEditing.Tag = "Promo" Then
-            If Not Char.IsNumber(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) AndAlso Not e.KeyChar = "." AndAlso Not e.KeyChar = "-" Then
+            If Not Char.IsNumber(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) AndAlso Not e.KeyChar = "." Then
                 e.Handled = True
             End If
         End If

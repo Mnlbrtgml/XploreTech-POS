@@ -37,7 +37,12 @@
             btnAdd.Hide()
         End If
 
-        LoadActionButton(dgvTable)
+        If Not cmbxSettings.SelectedItem = "Service Type Settings" Then
+            LoadActionButton(dgvTable)
+        Else
+            LoadEditButton(dgvTable)
+        End If
+
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click

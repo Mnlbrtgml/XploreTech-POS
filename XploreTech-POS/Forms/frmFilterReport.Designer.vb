@@ -27,18 +27,18 @@ Partial Class frmFilterReport
         Me.elipse = New Bunifu.Framework.UI.BunifuElipse(Me.components)
         Me.formShadow = New Guna.UI2.WinForms.Guna2ShadowForm(Me.components)
         Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.cmbxReport = New Guna.UI2.WinForms.Guna2ComboBox()
-        Me.BunifuLabel1 = New Bunifu.UI.WinForms.BunifuLabel()
-        Me.Guna2DateTimePicker1 = New Guna.UI2.WinForms.Guna2DateTimePicker()
+        Me.Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
+        Me.btnDone = New Guna.UI2.WinForms.Guna2Button()
+        Me.txtSearch = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2DateTimePicker2 = New Guna.UI2.WinForms.Guna2DateTimePicker()
+        Me.Guna2DateTimePicker1 = New Guna.UI2.WinForms.Guna2DateTimePicker()
         Me.BunifuLabel2 = New Bunifu.UI.WinForms.BunifuLabel()
-        Me.BunifuLabel3 = New Bunifu.UI.WinForms.BunifuLabel()
-        Me.Guna2ComboBox1 = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.BunifuLabel4 = New Bunifu.UI.WinForms.BunifuLabel()
         Me.BunifuLabel5 = New Bunifu.UI.WinForms.BunifuLabel()
-        Me.txtSearch = New Guna.UI2.WinForms.Guna2TextBox()
-        Me.btnDone = New Guna.UI2.WinForms.Guna2Button()
-        Me.Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
+        Me.BunifuLabel3 = New Bunifu.UI.WinForms.BunifuLabel()
+        Me.Guna2ComboBox1 = New Guna.UI2.WinForms.Guna2ComboBox()
+        Me.BunifuLabel1 = New Bunifu.UI.WinForms.BunifuLabel()
+        Me.cmbxReport = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.Guna2Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -70,73 +70,78 @@ Partial Class frmFilterReport
         Me.Guna2Panel1.Size = New System.Drawing.Size(456, 301)
         Me.Guna2Panel1.TabIndex = 0
         '
-        'cmbxReport
+        'Guna2Button1
         '
-        Me.cmbxReport.BackColor = System.Drawing.Color.Transparent
-        Me.cmbxReport.BorderColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(92, Byte), Integer))
-        Me.cmbxReport.BorderRadius = 6
-        Me.cmbxReport.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.cmbxReport.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbxReport.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(99, Byte), Integer), CType(CType(78, Byte), Integer))
-        Me.cmbxReport.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(99, Byte), Integer), CType(CType(78, Byte), Integer))
-        Me.cmbxReport.FocusedState.Parent = Me.cmbxReport
-        Me.cmbxReport.Font = New System.Drawing.Font("Roboto", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbxReport.ForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        Me.cmbxReport.FormattingEnabled = True
-        Me.cmbxReport.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(219, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(137, Byte), Integer))
-        Me.cmbxReport.HoverState.Parent = Me.cmbxReport
-        Me.cmbxReport.ItemHeight = 30
-        Me.cmbxReport.Items.AddRange(New Object() {"Sample 1", "Sample 2", "Sample 3", "Sample 4", "Sample 5", "Sample 6", "Sample 7", "Sample 8"})
-        Me.cmbxReport.ItemsAppearance.BackColor = System.Drawing.Color.White
-        Me.cmbxReport.ItemsAppearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        Me.cmbxReport.ItemsAppearance.Parent = Me.cmbxReport
-        Me.cmbxReport.ItemsAppearance.SelectedBackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(92, Byte), Integer))
-        Me.cmbxReport.ItemsAppearance.SelectedFont = New System.Drawing.Font("Roboto", 8.0!)
-        Me.cmbxReport.ItemsAppearance.SelectedForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        Me.cmbxReport.Location = New System.Drawing.Point(25, 114)
-        Me.cmbxReport.Name = "cmbxReport"
-        Me.cmbxReport.ShadowDecoration.Enabled = True
-        Me.cmbxReport.ShadowDecoration.Parent = Me.cmbxReport
-        Me.cmbxReport.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 5, 5)
-        Me.cmbxReport.Size = New System.Drawing.Size(200, 36)
-        Me.cmbxReport.TabIndex = 1
+        Me.Guna2Button1.Animated = True
+        Me.Guna2Button1.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2Button1.BorderRadius = 6
+        Me.Guna2Button1.CheckedState.Parent = Me.Guna2Button1
+        Me.Guna2Button1.CustomImages.Parent = Me.Guna2Button1
+        Me.Guna2Button1.FillColor = System.Drawing.SystemColors.Control
+        Me.Guna2Button1.Font = New System.Drawing.Font("Roboto", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2Button1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        Me.Guna2Button1.HoverState.Parent = Me.Guna2Button1
+        Me.Guna2Button1.Location = New System.Drawing.Point(75, 240)
+        Me.Guna2Button1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Guna2Button1.Name = "Guna2Button1"
+        Me.Guna2Button1.ShadowDecoration.Enabled = True
+        Me.Guna2Button1.ShadowDecoration.Parent = Me.Guna2Button1
+        Me.Guna2Button1.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 5, 5)
+        Me.Guna2Button1.Size = New System.Drawing.Size(150, 36)
+        Me.Guna2Button1.TabIndex = 12
+        Me.Guna2Button1.Text = "Cancel"
         '
-        'BunifuLabel1
+        'btnDone
         '
-        Me.BunifuLabel1.AllowParentOverrides = False
-        Me.BunifuLabel1.AutoEllipsis = False
-        Me.BunifuLabel1.AutoSize = False
-        Me.BunifuLabel1.Cursor = System.Windows.Forms.Cursors.Default
-        Me.BunifuLabel1.CursorType = System.Windows.Forms.Cursors.Default
-        Me.BunifuLabel1.Font = New System.Drawing.Font("Roboto", 9.0!)
-        Me.BunifuLabel1.Location = New System.Drawing.Point(25, 25)
-        Me.BunifuLabel1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.BunifuLabel1.Name = "BunifuLabel1"
-        Me.BunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.BunifuLabel1.Size = New System.Drawing.Size(200, 19)
-        Me.BunifuLabel1.TabIndex = 8
-        Me.BunifuLabel1.Text = "Filter report from"
-        Me.BunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.[Default]
+        Me.btnDone.Animated = True
+        Me.btnDone.BackColor = System.Drawing.Color.Transparent
+        Me.btnDone.BorderRadius = 6
+        Me.btnDone.CheckedState.Parent = Me.btnDone
+        Me.btnDone.CustomImages.Parent = Me.btnDone
+        Me.btnDone.FillColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(92, Byte), Integer))
+        Me.btnDone.Font = New System.Drawing.Font("Roboto", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDone.ForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        Me.btnDone.HoverState.Parent = Me.btnDone
+        Me.btnDone.Location = New System.Drawing.Point(231, 240)
+        Me.btnDone.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.btnDone.Name = "btnDone"
+        Me.btnDone.ShadowDecoration.Enabled = True
+        Me.btnDone.ShadowDecoration.Parent = Me.btnDone
+        Me.btnDone.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 5, 5)
+        Me.btnDone.Size = New System.Drawing.Size(150, 36)
+        Me.btnDone.TabIndex = 12
+        Me.btnDone.Text = "Done"
         '
-        'Guna2DateTimePicker1
+        'txtSearch
         '
-        Me.Guna2DateTimePicker1.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(163, Byte), Integer), CType(CType(146, Byte), Integer))
-        Me.Guna2DateTimePicker1.BorderColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(92, Byte), Integer))
-        Me.Guna2DateTimePicker1.BorderRadius = 6
-        Me.Guna2DateTimePicker1.BorderThickness = 1
-        Me.Guna2DateTimePicker1.CheckedState.Parent = Me.Guna2DateTimePicker1
-        Me.Guna2DateTimePicker1.FillColor = System.Drawing.Color.White
-        Me.Guna2DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Long]
-        Me.Guna2DateTimePicker1.HoverState.Parent = Me.Guna2DateTimePicker1
-        Me.Guna2DateTimePicker1.Location = New System.Drawing.Point(25, 49)
-        Me.Guna2DateTimePicker1.MaxDate = New Date(9998, 12, 31, 0, 0, 0, 0)
-        Me.Guna2DateTimePicker1.MinDate = New Date(1753, 1, 1, 0, 0, 0, 0)
-        Me.Guna2DateTimePicker1.Name = "Guna2DateTimePicker1"
-        Me.Guna2DateTimePicker1.ShadowDecoration.Parent = Me.Guna2DateTimePicker1
-        Me.Guna2DateTimePicker1.Size = New System.Drawing.Size(200, 36)
-        Me.Guna2DateTimePicker1.TabIndex = 9
-        Me.Guna2DateTimePicker1.Value = New Date(2022, 6, 8, 20, 15, 43, 979)
+        Me.txtSearch.Animated = True
+        Me.txtSearch.BackColor = System.Drawing.Color.Transparent
+        Me.txtSearch.BorderColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(92, Byte), Integer))
+        Me.txtSearch.BorderRadius = 6
+        Me.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtSearch.DefaultText = ""
+        Me.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.txtSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.txtSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtSearch.DisabledState.Parent = Me.txtSearch
+        Me.txtSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(99, Byte), Integer), CType(CType(78, Byte), Integer))
+        Me.txtSearch.FocusedState.Parent = Me.txtSearch
+        Me.txtSearch.Font = New System.Drawing.Font("Roboto", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSearch.ForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        Me.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(219, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(137, Byte), Integer))
+        Me.txtSearch.HoverState.Parent = Me.txtSearch
+        Me.txtSearch.Location = New System.Drawing.Point(25, 179)
+        Me.txtSearch.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.txtSearch.PlaceholderText = "Search"
+        Me.txtSearch.SelectedText = ""
+        Me.txtSearch.ShadowDecoration.Enabled = True
+        Me.txtSearch.ShadowDecoration.Parent = Me.txtSearch
+        Me.txtSearch.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 5, 5)
+        Me.txtSearch.Size = New System.Drawing.Size(406, 36)
+        Me.txtSearch.TabIndex = 11
         '
         'Guna2DateTimePicker2
         '
@@ -157,6 +162,25 @@ Partial Class frmFilterReport
         Me.Guna2DateTimePicker2.TabIndex = 9
         Me.Guna2DateTimePicker2.Value = New Date(2022, 6, 8, 20, 15, 43, 979)
         '
+        'Guna2DateTimePicker1
+        '
+        Me.Guna2DateTimePicker1.BackColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(163, Byte), Integer), CType(CType(146, Byte), Integer))
+        Me.Guna2DateTimePicker1.BorderColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(92, Byte), Integer))
+        Me.Guna2DateTimePicker1.BorderRadius = 6
+        Me.Guna2DateTimePicker1.BorderThickness = 1
+        Me.Guna2DateTimePicker1.CheckedState.Parent = Me.Guna2DateTimePicker1
+        Me.Guna2DateTimePicker1.FillColor = System.Drawing.Color.White
+        Me.Guna2DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Long]
+        Me.Guna2DateTimePicker1.HoverState.Parent = Me.Guna2DateTimePicker1
+        Me.Guna2DateTimePicker1.Location = New System.Drawing.Point(25, 49)
+        Me.Guna2DateTimePicker1.MaxDate = New Date(9998, 12, 31, 0, 0, 0, 0)
+        Me.Guna2DateTimePicker1.MinDate = New Date(1753, 1, 1, 0, 0, 0, 0)
+        Me.Guna2DateTimePicker1.Name = "Guna2DateTimePicker1"
+        Me.Guna2DateTimePicker1.ShadowDecoration.Parent = Me.Guna2DateTimePicker1
+        Me.Guna2DateTimePicker1.Size = New System.Drawing.Size(200, 36)
+        Me.Guna2DateTimePicker1.TabIndex = 9
+        Me.Guna2DateTimePicker1.Value = New Date(2022, 6, 8, 20, 15, 43, 979)
+        '
         'BunifuLabel2
         '
         Me.BunifuLabel2.AllowParentOverrides = False
@@ -174,6 +198,42 @@ Partial Class frmFilterReport
         Me.BunifuLabel2.Text = "To"
         Me.BunifuLabel2.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft
         Me.BunifuLabel2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.[Default]
+        '
+        'BunifuLabel4
+        '
+        Me.BunifuLabel4.AllowParentOverrides = False
+        Me.BunifuLabel4.AutoEllipsis = False
+        Me.BunifuLabel4.AutoSize = False
+        Me.BunifuLabel4.Cursor = System.Windows.Forms.Cursors.Default
+        Me.BunifuLabel4.CursorType = System.Windows.Forms.Cursors.Default
+        Me.BunifuLabel4.Font = New System.Drawing.Font("Roboto", 9.0!)
+        Me.BunifuLabel4.Location = New System.Drawing.Point(231, 90)
+        Me.BunifuLabel4.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.BunifuLabel4.Name = "BunifuLabel4"
+        Me.BunifuLabel4.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.BunifuLabel4.Size = New System.Drawing.Size(200, 19)
+        Me.BunifuLabel4.TabIndex = 8
+        Me.BunifuLabel4.Text = "Filter by keyword"
+        Me.BunifuLabel4.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BunifuLabel4.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.[Default]
+        '
+        'BunifuLabel5
+        '
+        Me.BunifuLabel5.AllowParentOverrides = False
+        Me.BunifuLabel5.AutoEllipsis = False
+        Me.BunifuLabel5.AutoSize = False
+        Me.BunifuLabel5.Cursor = System.Windows.Forms.Cursors.Default
+        Me.BunifuLabel5.CursorType = System.Windows.Forms.Cursors.Default
+        Me.BunifuLabel5.Font = New System.Drawing.Font("Roboto", 9.0!)
+        Me.BunifuLabel5.Location = New System.Drawing.Point(25, 155)
+        Me.BunifuLabel5.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.BunifuLabel5.Name = "BunifuLabel5"
+        Me.BunifuLabel5.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.BunifuLabel5.Size = New System.Drawing.Size(200, 19)
+        Me.BunifuLabel5.TabIndex = 8
+        Me.BunifuLabel5.Text = "Search for"
+        Me.BunifuLabel5.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BunifuLabel5.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.[Default]
         '
         'BunifuLabel3
         '
@@ -224,117 +284,58 @@ Partial Class frmFilterReport
         Me.Guna2ComboBox1.Size = New System.Drawing.Size(200, 36)
         Me.Guna2ComboBox1.TabIndex = 1
         '
-        'BunifuLabel4
+        'BunifuLabel1
         '
-        Me.BunifuLabel4.AllowParentOverrides = False
-        Me.BunifuLabel4.AutoEllipsis = False
-        Me.BunifuLabel4.AutoSize = False
-        Me.BunifuLabel4.Cursor = System.Windows.Forms.Cursors.Default
-        Me.BunifuLabel4.CursorType = System.Windows.Forms.Cursors.Default
-        Me.BunifuLabel4.Font = New System.Drawing.Font("Roboto", 9.0!)
-        Me.BunifuLabel4.Location = New System.Drawing.Point(231, 90)
-        Me.BunifuLabel4.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.BunifuLabel4.Name = "BunifuLabel4"
-        Me.BunifuLabel4.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.BunifuLabel4.Size = New System.Drawing.Size(200, 19)
-        Me.BunifuLabel4.TabIndex = 8
-        Me.BunifuLabel4.Text = "Filter by keyword"
-        Me.BunifuLabel4.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BunifuLabel4.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.[Default]
+        Me.BunifuLabel1.AllowParentOverrides = False
+        Me.BunifuLabel1.AutoEllipsis = False
+        Me.BunifuLabel1.AutoSize = False
+        Me.BunifuLabel1.Cursor = System.Windows.Forms.Cursors.Default
+        Me.BunifuLabel1.CursorType = System.Windows.Forms.Cursors.Default
+        Me.BunifuLabel1.Font = New System.Drawing.Font("Roboto", 9.0!)
+        Me.BunifuLabel1.Location = New System.Drawing.Point(25, 25)
+        Me.BunifuLabel1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.BunifuLabel1.Name = "BunifuLabel1"
+        Me.BunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.BunifuLabel1.Size = New System.Drawing.Size(200, 19)
+        Me.BunifuLabel1.TabIndex = 8
+        Me.BunifuLabel1.Text = "Filter report from"
+        Me.BunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.[Default]
         '
-        'BunifuLabel5
+        'cmbxReport
         '
-        Me.BunifuLabel5.AllowParentOverrides = False
-        Me.BunifuLabel5.AutoEllipsis = False
-        Me.BunifuLabel5.AutoSize = False
-        Me.BunifuLabel5.Cursor = System.Windows.Forms.Cursors.Default
-        Me.BunifuLabel5.CursorType = System.Windows.Forms.Cursors.Default
-        Me.BunifuLabel5.Font = New System.Drawing.Font("Roboto", 9.0!)
-        Me.BunifuLabel5.Location = New System.Drawing.Point(25, 155)
-        Me.BunifuLabel5.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.BunifuLabel5.Name = "BunifuLabel5"
-        Me.BunifuLabel5.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.BunifuLabel5.Size = New System.Drawing.Size(200, 19)
-        Me.BunifuLabel5.TabIndex = 8
-        Me.BunifuLabel5.Text = "Search for"
-        Me.BunifuLabel5.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BunifuLabel5.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.[Default]
-        '
-        'txtSearch
-        '
-        Me.txtSearch.Animated = True
-        Me.txtSearch.BackColor = System.Drawing.Color.Transparent
-        Me.txtSearch.BorderColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(92, Byte), Integer))
-        Me.txtSearch.BorderRadius = 6
-        Me.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtSearch.DefaultText = ""
-        Me.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.txtSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.txtSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.txtSearch.DisabledState.Parent = Me.txtSearch
-        Me.txtSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.txtSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(99, Byte), Integer), CType(CType(78, Byte), Integer))
-        Me.txtSearch.FocusedState.Parent = Me.txtSearch
-        Me.txtSearch.Font = New System.Drawing.Font("Roboto", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSearch.ForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        Me.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(219, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(137, Byte), Integer))
-        Me.txtSearch.HoverState.Parent = Me.txtSearch
-        Me.txtSearch.Location = New System.Drawing.Point(25, 179)
-        Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.txtSearch.PlaceholderText = "Search"
-        Me.txtSearch.SelectedText = ""
-        Me.txtSearch.ShadowDecoration.Enabled = True
-        Me.txtSearch.ShadowDecoration.Parent = Me.txtSearch
-        Me.txtSearch.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 5, 5)
-        Me.txtSearch.Size = New System.Drawing.Size(406, 36)
-        Me.txtSearch.TabIndex = 11
-        '
-        'btnDone
-        '
-        Me.btnDone.Animated = True
-        Me.btnDone.BackColor = System.Drawing.Color.Transparent
-        Me.btnDone.BorderRadius = 6
-        Me.btnDone.CheckedState.Parent = Me.btnDone
-        Me.btnDone.CustomImages.Parent = Me.btnDone
-        Me.btnDone.FillColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(92, Byte), Integer))
-        Me.btnDone.Font = New System.Drawing.Font("Roboto", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDone.ForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        Me.btnDone.HoverState.Parent = Me.btnDone
-        Me.btnDone.Location = New System.Drawing.Point(231, 240)
-        Me.btnDone.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.btnDone.Name = "btnDone"
-        Me.btnDone.ShadowDecoration.Enabled = True
-        Me.btnDone.ShadowDecoration.Parent = Me.btnDone
-        Me.btnDone.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 5, 5)
-        Me.btnDone.Size = New System.Drawing.Size(150, 36)
-        Me.btnDone.TabIndex = 12
-        Me.btnDone.Text = "Done"
-        '
-        'Guna2Button1
-        '
-        Me.Guna2Button1.Animated = True
-        Me.Guna2Button1.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2Button1.BorderRadius = 6
-        Me.Guna2Button1.CheckedState.Parent = Me.Guna2Button1
-        Me.Guna2Button1.CustomImages.Parent = Me.Guna2Button1
-        Me.Guna2Button1.FillColor = System.Drawing.SystemColors.Control
-        Me.Guna2Button1.Font = New System.Drawing.Font("Roboto", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2Button1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        Me.Guna2Button1.HoverState.Parent = Me.Guna2Button1
-        Me.Guna2Button1.Location = New System.Drawing.Point(75, 240)
-        Me.Guna2Button1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.Guna2Button1.Name = "Guna2Button1"
-        Me.Guna2Button1.ShadowDecoration.Enabled = True
-        Me.Guna2Button1.ShadowDecoration.Parent = Me.Guna2Button1
-        Me.Guna2Button1.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 5, 5)
-        Me.Guna2Button1.Size = New System.Drawing.Size(150, 36)
-        Me.Guna2Button1.TabIndex = 12
-        Me.Guna2Button1.Text = "Cancel"
+        Me.cmbxReport.BackColor = System.Drawing.Color.Transparent
+        Me.cmbxReport.BorderColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(92, Byte), Integer))
+        Me.cmbxReport.BorderRadius = 6
+        Me.cmbxReport.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.cmbxReport.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbxReport.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(99, Byte), Integer), CType(CType(78, Byte), Integer))
+        Me.cmbxReport.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(99, Byte), Integer), CType(CType(78, Byte), Integer))
+        Me.cmbxReport.FocusedState.Parent = Me.cmbxReport
+        Me.cmbxReport.Font = New System.Drawing.Font("Roboto", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbxReport.ForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        Me.cmbxReport.FormattingEnabled = True
+        Me.cmbxReport.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(219, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(137, Byte), Integer))
+        Me.cmbxReport.HoverState.Parent = Me.cmbxReport
+        Me.cmbxReport.ItemHeight = 30
+        Me.cmbxReport.Items.AddRange(New Object() {"Sample 1", "Sample 2", "Sample 3", "Sample 4", "Sample 5", "Sample 6", "Sample 7", "Sample 8"})
+        Me.cmbxReport.ItemsAppearance.BackColor = System.Drawing.Color.White
+        Me.cmbxReport.ItemsAppearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        Me.cmbxReport.ItemsAppearance.Parent = Me.cmbxReport
+        Me.cmbxReport.ItemsAppearance.SelectedBackColor = System.Drawing.Color.FromArgb(CType(CType(236, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(92, Byte), Integer))
+        Me.cmbxReport.ItemsAppearance.SelectedFont = New System.Drawing.Font("Roboto", 8.0!)
+        Me.cmbxReport.ItemsAppearance.SelectedForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        Me.cmbxReport.Location = New System.Drawing.Point(25, 114)
+        Me.cmbxReport.Name = "cmbxReport"
+        Me.cmbxReport.ShadowDecoration.Enabled = True
+        Me.cmbxReport.ShadowDecoration.Parent = Me.cmbxReport
+        Me.cmbxReport.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 5, 5)
+        Me.cmbxReport.Size = New System.Drawing.Size(200, 36)
+        Me.cmbxReport.TabIndex = 1
         '
         'frmFilterReport
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 14.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(249, Byte), Integer), CType(CType(209, Byte), Integer), CType(CType(200, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(506, 351)

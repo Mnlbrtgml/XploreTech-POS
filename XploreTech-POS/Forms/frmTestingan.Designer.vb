@@ -41,7 +41,7 @@ Partial Class frmTestingan
         Me.ClientSize = New System.Drawing.Size(574, 450)
         Me.Controls.Add(Me.report)
         Me.Name = "frmTestingan"
-        Me.Text = "frmTestingan"
+        Me.Text = "Receipt"
         Me.ResumeLayout(False)
 
     End Sub
