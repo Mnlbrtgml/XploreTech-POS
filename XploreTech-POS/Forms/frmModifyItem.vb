@@ -48,6 +48,7 @@ Public Class frmModifyItem
             Else
                 Label05.Text = "Re-type password"
                 Label05.Show()
+                Textbox04.PasswordChar = "*"
                 Textbox04.Show()
             End If
         ElseIf pnlEditing.Tag = "Customer list" Then

@@ -85,7 +85,7 @@ Module AuthUser
         Dim msg As String = ""
 
         Using con = Conn()
-            Dim stmt As String = "SELECT * FROM user WHERE CONCAT(Username, Password) = @decoded"
+            Dim stmt As String = "SELECT * FROM user WHERE CONCAT(Username, Password) = @decoded AND `is_archive` = false"
             cmd = Command(stmt, con)
             cmd.Parameters.Clear()
             cmd.Parameters.AddWithValue("decoded", decoded)
@@ -161,16 +161,21 @@ Public Class UserAuthentication
             If drr.HasRows Then
 
                 Dim pass As String = DecryptPassword(drr.GetValue(drr.GetOrdinal("Password")))
+                Dim archive As String = drr.GetValue(drr.GetOrdinal("is_archive"))
 
                 If pass = password Then
-                    LoggedUser = New User()
-                    With LoggedUser
-                        .FullName = drr.GetValue(drr.GetOrdinal("Full_Name"))
-                        .UserType = drr.GetValue(drr.GetOrdinal("User_Type"))
-                        .ID = drr.GetValue(drr.GetOrdinal("User_ID"))
-                        .Username = drr.GetValue(drr.GetOrdinal("Username"))
-                        .Password = DecryptPassword(drr.GetValue(drr.GetOrdinal("Password")))
-                    End With
+                    If archive = False Then
+                        LoggedUser = New User()
+                        With LoggedUser
+                            .FullName = drr.GetValue(drr.GetOrdinal("Full_Name"))
+                            .UserType = drr.GetValue(drr.GetOrdinal("User_Type"))
+                            .ID = drr.GetValue(drr.GetOrdinal("User_ID"))
+                            .Username = drr.GetValue(drr.GetOrdinal("Username"))
+                            .Password = DecryptPassword(drr.GetValue(drr.GetOrdinal("Password")))
+                        End With
+                    Else
+                        msg = "Invalid username or password!"
+                    End If
                 Else
                     msg = "Wrong password"
                 End If
