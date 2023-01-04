@@ -61,5 +61,53 @@ Public Class frmDashboard
             PromoPanel.Controls.Add(PromoHeader)
             PromoPanel.Controls.Add(lblPromoDescription)
         Next
+        renderPieChart()
     End Sub
+
+    Private Sub renderPieChart()
+
+        ' 
+        '  For this example we will use random numbers
+        ' 
+        Dim r = New Random()
+
+        ' 
+        '  Add your data from your source - accepts double list
+        '  Below is an example from a random number
+        ' 
+        Dim data As List(Of Double) = New List(Of Double)()
+        Dim canvasLabel As List(Of String) = New List(Of String)()
+        Dim products As List(Of Item) = GetTopSelling()
+        For i As Integer = 0 To IIf(products.Count > 5, 4, products.Count - 1)
+            data.Add(products(i).Quantity)
+            canvasLabel.Add(products(i).Name)
+        Next
+
+        ' 
+        '  Set your data             
+        ' 
+        bunifuPieChart.Data = data
+
+        ' 
+        '  Specify the target canvas
+        ' 
+        bunifuPieChart.TargetCanvas = ctrlChartCanvas
+
+        ' 
+        '  Hide grid lines
+        ' 
+        ctrlChartCanvas.XAxesGridLines = False
+        ctrlChartCanvas.YAxesGridLines = False
+
+        ' 
+        '  Add labels to your canvas
+        '  Label count should correspond to data count for charts like Bar charts
+        ' 
+        ctrlChartCanvas.Labels = canvasLabel.ToArray
+        For i As Integer = 0 To IIf(products.Count > 5, 4, products.Count - 1)
+            Dim textbox = CType(Me.Guna2Panel2.Controls("legend" & i), Bunifu.UI.WinForms.BunifuLabel)
+            textbox.Text = ctrlChartCanvas.Labels(i)
+        Next
+    End Sub
+
 End Class

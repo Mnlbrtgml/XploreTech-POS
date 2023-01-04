@@ -22,11 +22,17 @@ Partial Class frmDashboard
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmDashboard))
         Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
         Me.lblNumberOfTransaction = New Bunifu.UI.WinForms.BunifuLabel()
         Me.BunifuLabel1 = New Bunifu.UI.WinForms.BunifuLabel()
         Me.Guna2Panel2 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.legend4 = New Bunifu.UI.WinForms.BunifuLabel()
+        Me.legend3 = New Bunifu.UI.WinForms.BunifuLabel()
+        Me.legend2 = New Bunifu.UI.WinForms.BunifuLabel()
+        Me.legend1 = New Bunifu.UI.WinForms.BunifuLabel()
+        Me.legend0 = New Bunifu.UI.WinForms.BunifuLabel()
         Me.ctrlChartCanvas = New Bunifu.Charts.WinForms.BunifuChartCanvas()
         Me.BunifuLabel4 = New Bunifu.UI.WinForms.BunifuLabel()
         Me.Guna2Panel4 = New Guna.UI2.WinForms.Guna2Panel()
@@ -39,6 +45,7 @@ Partial Class frmDashboard
         Me.scbrPromoList = New Bunifu.UI.WinForms.BunifuVScrollBar()
         Me.pnlPromoList = New Bunifu.UI.WinForms.BunifuPanel()
         Me.BunifuLabel5 = New Bunifu.UI.WinForms.BunifuLabel()
+        Me.bunifuPieChart = New Bunifu.Charts.WinForms.ChartTypes.BunifuPieChart(Me.components)
         Me.Guna2Panel1.SuspendLayout()
         Me.Guna2Panel2.SuspendLayout()
         Me.Guna2Panel4.SuspendLayout()
@@ -105,6 +112,11 @@ Partial Class frmDashboard
         Me.Guna2Panel2.BackColor = System.Drawing.Color.Transparent
         Me.Guna2Panel2.BorderColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(163, Byte), Integer), CType(CType(146, Byte), Integer))
         Me.Guna2Panel2.BorderRadius = 6
+        Me.Guna2Panel2.Controls.Add(Me.legend4)
+        Me.Guna2Panel2.Controls.Add(Me.legend3)
+        Me.Guna2Panel2.Controls.Add(Me.legend2)
+        Me.Guna2Panel2.Controls.Add(Me.legend1)
+        Me.Guna2Panel2.Controls.Add(Me.legend0)
         Me.Guna2Panel2.Controls.Add(Me.ctrlChartCanvas)
         Me.Guna2Panel2.Controls.Add(Me.BunifuLabel4)
         Me.Guna2Panel2.FillColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(163, Byte), Integer), CType(CType(146, Byte), Integer))
@@ -117,6 +129,91 @@ Partial Class frmDashboard
         Me.Guna2Panel2.Size = New System.Drawing.Size(451, 286)
         Me.Guna2Panel2.TabIndex = 1
         '
+        'legend4
+        '
+        Me.legend4.AllowParentOverrides = False
+        Me.legend4.AutoEllipsis = False
+        Me.legend4.AutoSize = False
+        Me.legend4.BackColor = System.Drawing.Color.FromArgb(CType(CType(182, Byte), Integer), CType(CType(29, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.legend4.CursorType = Nothing
+        Me.legend4.Font = New System.Drawing.Font("Roboto", 8.0!)
+        Me.legend4.Location = New System.Drawing.Point(306, 216)
+        Me.legend4.Name = "legend4"
+        Me.legend4.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.legend4.Size = New System.Drawing.Size(134, 34)
+        Me.legend4.TabIndex = 7
+        Me.legend4.Text = "Top Selling Products"
+        Me.legend4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.legend4.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.[Default]
+        '
+        'legend3
+        '
+        Me.legend3.AllowParentOverrides = False
+        Me.legend3.AutoEllipsis = False
+        Me.legend3.AutoSize = False
+        Me.legend3.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.legend3.CursorType = Nothing
+        Me.legend3.Font = New System.Drawing.Font("Roboto", 8.0!)
+        Me.legend3.Location = New System.Drawing.Point(306, 176)
+        Me.legend3.Name = "legend3"
+        Me.legend3.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.legend3.Size = New System.Drawing.Size(134, 34)
+        Me.legend3.TabIndex = 6
+        Me.legend3.Text = "Top Selling Products"
+        Me.legend3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.legend3.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.[Default]
+        '
+        'legend2
+        '
+        Me.legend2.AllowParentOverrides = False
+        Me.legend2.AutoEllipsis = False
+        Me.legend2.AutoSize = False
+        Me.legend2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(101, Byte), Integer), CType(CType(73, Byte), Integer))
+        Me.legend2.CursorType = Nothing
+        Me.legend2.Font = New System.Drawing.Font("Roboto", 8.0!)
+        Me.legend2.Location = New System.Drawing.Point(306, 136)
+        Me.legend2.Name = "legend2"
+        Me.legend2.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.legend2.Size = New System.Drawing.Size(134, 34)
+        Me.legend2.TabIndex = 5
+        Me.legend2.Text = "Top Selling Products"
+        Me.legend2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.legend2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.[Default]
+        '
+        'legend1
+        '
+        Me.legend1.AllowParentOverrides = False
+        Me.legend1.AutoEllipsis = False
+        Me.legend1.AutoSize = False
+        Me.legend1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(163, Byte), Integer), CType(CType(146, Byte), Integer))
+        Me.legend1.CursorType = Nothing
+        Me.legend1.Font = New System.Drawing.Font("Roboto", 8.0!)
+        Me.legend1.Location = New System.Drawing.Point(306, 96)
+        Me.legend1.Name = "legend1"
+        Me.legend1.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.legend1.Size = New System.Drawing.Size(134, 34)
+        Me.legend1.TabIndex = 4
+        Me.legend1.Text = "Top Selling Products"
+        Me.legend1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.legend1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.[Default]
+        '
+        'legend0
+        '
+        Me.legend0.AllowParentOverrides = False
+        Me.legend0.AutoEllipsis = False
+        Me.legend0.AutoSize = False
+        Me.legend0.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(219, Byte), Integer))
+        Me.legend0.CursorType = Nothing
+        Me.legend0.Font = New System.Drawing.Font("Roboto", 8.0!)
+        Me.legend0.Location = New System.Drawing.Point(306, 56)
+        Me.legend0.Name = "legend0"
+        Me.legend0.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.legend0.Size = New System.Drawing.Size(134, 34)
+        Me.legend0.TabIndex = 3
+        Me.legend0.Text = "Top Selling Products"
+        Me.legend0.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.legend0.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.[Default]
+        '
         'ctrlChartCanvas
         '
         Me.ctrlChartCanvas.AnimationDuration = 1000
@@ -125,18 +222,19 @@ Partial Class frmDashboard
         Me.ctrlChartCanvas.CanvasPadding = New System.Windows.Forms.Padding(0)
         Me.ctrlChartCanvas.Labels = New String(-1) {}
         Me.ctrlChartCanvas.LegendAlignment = Bunifu.Charts.WinForms.BunifuChartCanvas.LegendAlignmentOptions.center
-        Me.ctrlChartCanvas.LegendDisplay = True
+        Me.ctrlChartCanvas.LegendDisplay = False
         Me.ctrlChartCanvas.LegendFont = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.ctrlChartCanvas.LegendForeColor = System.Drawing.Color.Black
         Me.ctrlChartCanvas.LegendFullWidth = True
         Me.ctrlChartCanvas.LegendPosition = Bunifu.Charts.WinForms.BunifuChartCanvas.PositionOptions.right
         Me.ctrlChartCanvas.LegendRevese = False
         Me.ctrlChartCanvas.LegendRTL = False
-        Me.ctrlChartCanvas.Location = New System.Drawing.Point(0, 75)
+        Me.ctrlChartCanvas.Location = New System.Drawing.Point(-65, 53)
+        Me.ctrlChartCanvas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.ctrlChartCanvas.Name = "ctrlChartCanvas"
-        Me.ctrlChartCanvas.ShowXAxis = True
-        Me.ctrlChartCanvas.ShowYAxis = True
-        Me.ctrlChartCanvas.Size = New System.Drawing.Size(402, 191)
+        Me.ctrlChartCanvas.ShowXAxis = False
+        Me.ctrlChartCanvas.ShowYAxis = False
+        Me.ctrlChartCanvas.Size = New System.Drawing.Size(349, 211)
         Me.ctrlChartCanvas.TabIndex = 2
         Me.ctrlChartCanvas.Title = ""
         Me.ctrlChartCanvas.TitleLineHeight = 1.2R
@@ -336,6 +434,7 @@ Partial Class frmDashboard
         Me.scbrPromoList.DurationBeforeShrink = 2000
         Me.scbrPromoList.LargeChange = 10
         Me.scbrPromoList.Location = New System.Drawing.Point(440, 53)
+        Me.scbrPromoList.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.scbrPromoList.Maximum = 100
         Me.scbrPromoList.Minimum = 0
         Me.scbrPromoList.MinimumThumbLength = 18
@@ -388,9 +487,21 @@ Partial Class frmDashboard
         Me.BunifuLabel5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
         Me.BunifuLabel5.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.[Default]
         '
+        'bunifuPieChart
+        '
+        Me.bunifuPieChart.BackgroundColor = CType(resources.GetObject("bunifuPieChart.BackgroundColor"), System.Collections.Generic.List(Of System.Drawing.Color))
+        Me.bunifuPieChart.BorderColor = CType(resources.GetObject("bunifuPieChart.BorderColor"), System.Collections.Generic.List(Of System.Drawing.Color))
+        Me.bunifuPieChart.BorderWidth = 0
+        Me.bunifuPieChart.Data = CType(resources.GetObject("bunifuPieChart.Data"), System.Collections.Generic.List(Of Double))
+        Me.bunifuPieChart.HoverBackgroundColor = System.Drawing.Color.Empty
+        Me.bunifuPieChart.HoverBorderColor = System.Drawing.Color.Empty
+        Me.bunifuPieChart.HoverBorderWidth = 0
+        Me.bunifuPieChart.Label = "Label here"
+        Me.bunifuPieChart.TargetCanvas = Nothing
+        '
         'frmDashboard
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 14.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(249, Byte), Integer), CType(CType(209, Byte), Integer), CType(CType(200, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(954, 646)
@@ -425,9 +536,15 @@ Partial Class frmDashboard
     Friend WithEvents lblNumberOfTransaction As Bunifu.UI.WinForms.BunifuLabel
     Friend WithEvents lblNumberOfSoldToday As Bunifu.UI.WinForms.BunifuLabel
     Friend WithEvents lblDailySales As Bunifu.UI.WinForms.BunifuLabel
-    Friend WithEvents ctrlChartCanvas As Bunifu.Charts.WinForms.BunifuChartCanvas
     Friend WithEvents Guna2Panel3 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents scbrPromoList As Bunifu.UI.WinForms.BunifuVScrollBar
     Friend WithEvents pnlPromoList As Bunifu.UI.WinForms.BunifuPanel
     Friend WithEvents BunifuLabel5 As Bunifu.UI.WinForms.BunifuLabel
+    Friend WithEvents ctrlChartCanvas As Bunifu.Charts.WinForms.BunifuChartCanvas
+    Friend WithEvents bunifuPieChart As Bunifu.Charts.WinForms.ChartTypes.BunifuPieChart
+    Friend WithEvents legend4 As Bunifu.UI.WinForms.BunifuLabel
+    Friend WithEvents legend3 As Bunifu.UI.WinForms.BunifuLabel
+    Friend WithEvents legend2 As Bunifu.UI.WinForms.BunifuLabel
+    Friend WithEvents legend1 As Bunifu.UI.WinForms.BunifuLabel
+    Friend WithEvents legend0 As Bunifu.UI.WinForms.BunifuLabel
 End Class

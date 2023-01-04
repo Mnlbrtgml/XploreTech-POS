@@ -1188,79 +1188,47 @@ Module DatabaseOperation
 
     End Function
 
-    Public Function GetTopSelling()
+    Public Function GetTopSelling() As List(Of Item)
 
-        'Dim productsOrderedList As New List(Of ProductsOrdered)
-        Dim topSellingProdducts As New List(Of Item)
+        Dim listMilktea As New List(Of String)
+        Dim topSellingProduct As New List(Of Item)
+
         Using con As MySqlConnection = Conn()
-            Dim stmt = "SELECT milktea.Name AS milktea, Quantity FROM `transaction` JOIN milktea ON transaction.Milktea_ID=milktea.Milktea_ID"
+            Dim stmt = "SELECT Name from milktea"
             Dim cmd = Command(stmt, con)
             con.Open()
             Dim rd As MySqlDataReader = cmd.ExecuteReader
 
             While rd.Read()
-                Dim item As New Item
-                item.Name = rd("milktea").ToString
-                item.Quantity = rd("Quantity")
-                If topSellingProdducts.Count > 1 Then
-                    For i = 0 To topSellingProdducts.Count - 1
-                        If topSellingProdducts(i).Name = item.Name Then
-                            topSellingProdducts(i).Quantity += item.Quantity
-                            Exit For
-                        ElseIf i = topSellingProdducts.Count - 1 Then
-                            topSellingProdducts.Add(item)
-                        End If
-                    Next
-                ElseIf topSellingProdducts.Count > 0 Then
-                    If topSellingProdducts(0).Name <> item.Name Then
-                        topSellingProdducts.Add(item)
-                    Else
-                        topSellingProdducts(0).Quantity += item.Quantity
-                    End If
-                Else
-                    topSellingProdducts.Add(item)
-                End If
+                listMilktea.Add(rd("Name").ToString)
             End While
-
-            topSellingProdducts.Sort(Function(x, y) y.Quantity.CompareTo(x.Quantity))
-            If topSellingProdducts.Count > 5 Then
-                topSellingProdducts.RemoveRange(5, topSellingProdducts.Count - 5)
-            End If
-
-            'If productsOrderedList.Count > 0 Then
-            '    For i = 0 To productsOrderedList.Count - 1
-            '        For j = 0 To productsOrderedList(i).product.Count - 1
-            '            Dim product As New TopSellingProduct
-            '            product.sold = productsOrderedList(i).product(j).quantity
-            '            product.name = productsOrderedList(i).product(j).name
-            '            Debug.Print("ADD PRODUCT          " + product.name + product.sold.ToString)
-            '            topSellingProdducts.Add(product)
-            '            For k = 0 To topSellingProdducts.Count - 1
-            '                If topSellingProdducts(k).name = topSellingProdducts(topSellingProdducts.Count - 1).name Then
-            '                    topSellingProdducts(k).sold = topSellingProdducts(topSellingProdducts.Count - 1).sold + topSellingProdducts(k).sold
-            '                    topSellingProdducts(topSellingProdducts.Count - 1).sold = 0
-            '                End If
-            '            Next
-            '        Next
-            '    Next
-            'End If
-
-            rd.Close()
         End Using
 
-        'topSellingProdducts.Sort(Function(x, y) y.sold.CompareTo(x.sold))
-        'If topSellingProdducts.Count > 5 Then
-        '    topSellingProdducts.RemoveRange(5, topSellingProdducts.Count - 5)
-        'End If
+        For i = 0 To listMilktea.Count - 1
+            Using con As MySqlConnection = Conn()
+                Dim stmt = "SELECT COUNT(m.Name)" _
+                            & "From transaction " _
+                            & "Join milktea AS m ON transaction.Milktea_ID = m.Milktea_ID " _
+                            & "WHERE m.Name = @milkteaName"
+                Dim cmd = Command(stmt, con)
+                cmd.Parameters.AddWithValue("milkteaName", listMilktea(i))
+                con.Open()
+                Dim rd As MySqlDataReader = cmd.ExecuteReader
 
-        'For index = 0 To topSellingProdducts.Count - 1
-        '    If topSellingProdducts(index).sold > 0 Then
-        '        topSellingProdducts(index).sold += 1
-        '    End If
-        '    'Debug.Print("PRoduct " & index & ": " & topSellingProdducts(index).name & " " & topSellingProdducts(index).sold)
-        'Next
+                While rd.Read()
+                    If rd("COUNT(m.Name)").ToString <> "0" Then
+                        Dim product As New Item
+                        product.Name = listMilktea(i)
+                        product.Quantity = rd("COUNT(m.Name)").ToString
+                        topSellingProduct.Add(product)
+                    End If
+                End While
+            End Using
+        Next
 
-        Return topSellingProdducts
+        topSellingProduct = topSellingProduct.OrderByDescending(Function(x) x.Quantity).ToList()
+
+        Return topSellingProduct
 
     End Function
 
@@ -1269,7 +1237,7 @@ Module DatabaseOperation
     '        Dim transacExist As Boolean = False
 
     '        Using con As MySqlConnection = Conn()
-    '            stmt = "SELECT * FROM `transaction` WHERE CONCAT(Receipt_ID) = @transacID"
+    '            stmt = "Select * FROM `transaction` WHERE CONCAT(Receipt_ID) = @transacID"
     '            cmd = Command(stmt, con)
     '            cmd.Parameters.AddWithValue("transacID", transacID)
     '            con.Open()
@@ -1293,7 +1261,7 @@ Module DatabaseOperation
         Dim transacExist As Boolean = False
 
         Using con As MySqlConnection = Conn()
-            stmt = "SELECT * FROM `transaction` WHERE CONCAT(Transaction_ID) = @transacID"
+            stmt = "Select * FROM `transaction` WHERE CONCAT(Transaction_ID) = @transacID"
             cmd = Command(stmt, con)
             cmd.Parameters.AddWithValue("transacID", transacID)
             con.Open()
@@ -1317,7 +1285,7 @@ Module DatabaseOperation
         Using con As MySqlConnection = Conn()
             Using cmd As New MySqlCommand()
                 With cmd
-                    .CommandText = "UPDATE `customer` SET `Number_of_Purchase` = `Number_of_Purchase` + @NumberOfPurchase WHERE `Customer_ID` = @CustomerID"
+                    .CommandText = "UPDATE `customer` Set `Number_of_Purchase` = `Number_of_Purchase` + @NumberOfPurchase WHERE `Customer_ID` = @CustomerID"
                     .Connection = con
                     .CommandType = CommandType.Text
                     .Parameters.AddWithValue("@NumberOfPurchase", NoOfPurchase)
